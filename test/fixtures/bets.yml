@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1
+  completed: false
+  accepted: false
+  user: one
+  challenge: one
+
+two:
+  value: 1
+  completed: false
+  accepted: false
+  user: two
+  challenge: two
