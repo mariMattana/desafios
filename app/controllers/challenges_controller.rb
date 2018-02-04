@@ -4,6 +4,12 @@ class ChallengesController < ApplicationController
   end
 
   def show
+    if params[:query].present?
+      @users = User.where(first_name: params[:query])
+    else
+      @users = User.all
+    end
+
     @challenge = Challenge.find(params[:id])
     authorize @challenge
   end

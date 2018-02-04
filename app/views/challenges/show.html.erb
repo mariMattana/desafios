@@ -28,29 +28,34 @@
   </div>
 </div>
 
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Convide um Amigo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h1>Convide um amigo</h1>
-        <%= form_tag users_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Encontre um amigo"
-        %>
+<!-- The Modal -->
+<div id="add-bet-modal" class="bet-modal">
+
+  <!-- Modal content -->
+  <div class="bet-modal-content">
+    <span class="close">&times;</span>
+    <h3>Convide um amigo</h3>
+    <div class="search">
+      <%= form_tag challenge_path(@challenge), method: :get do %>
+        <div class="search-bar">
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ache um Amigo" %>
+        </div>
+        <div class="search-btn">
+          <%= submit_tag "Pesquise" %>
+        </div>
+        <ul>
+          <% @users.each do |user| %>
+            <li>
+              <div class="search-user">
+                <%= user.try(:first_name) + " " + user.try(:last_name) %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Convidar</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      </div>
     </div>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+    <button type="button" class="btn btn-primary">Convidar</button>
   </div>
+
 </div>
