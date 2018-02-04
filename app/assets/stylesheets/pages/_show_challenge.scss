@@ -1,6 +1,6 @@
 /* The Modal (background) */
 .bet-modal {
-    // display: none; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -17,7 +17,7 @@
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -50,9 +50,20 @@
   border: 1px solid rgba(0, 0, 0, 0.4);
   margin: 0;
   width: 60%;
-  padding: 20px;
+  padding: 5px;
   position: relative;
   left: -40px;
+}
+.search-user:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.user-img {
+  display:inline-block;
+}
+.search-user p {
+  padding-left: 30px;
+  font-size: 20px;
+  display:inline-block;
 }
 .chosen{
   border: 1px solid $blue;
@@ -62,4 +73,7 @@
 }
 .bet-modal li {
   list-style: none;
+}
+.modal-btns {
+  margin-left: 70%;
 }

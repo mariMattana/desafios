@@ -33,7 +33,7 @@
 
   <!-- Modal content -->
   <div class="bet-modal-content">
-    <span class="close">&times;</span>
+    <span class="close" id="modal-close">&times;</span>
     <h3>Convide um amigo</h3>
     <div class="search">
       <%= form_tag challenge_path(@challenge), method: :get do %>
@@ -47,15 +47,21 @@
           <% @users.each do |user| %>
             <li>
               <div class="search-user">
-                <%= user.try(:first_name) + " " + user.try(:last_name) %>
+                <div class="user-img">
+                  <%= cl_image_tag(user.photo,
+                    width: 60, height: 60, crop: :fill) %>
+                </div>
+                <p><%= user.try(:first_name) + " " + user.try(:last_name) %></p>
               </div>
             </li>
           <% end %>
         </ul>
       <% end %>
     </div>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-    <button type="button" class="btn btn-primary">Convidar</button>
+    <div class="modal-btns">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <button type="button" class="btn btn-primary">Convidar</button>
+    </div>
   </div>
 
 </div>
