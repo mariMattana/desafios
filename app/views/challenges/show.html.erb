@@ -1,6 +1,56 @@
-<h3><%= @challenge.title %></h3>
-<h3><%= @challenge.description %></h3>
-<h3><%= @challenge.start_date %></h3>
-<h3><%= @challenge.end_date %></h3>
-<h3>R$ <%= @challenge.value %></h3>
-<h3>R$ <%= @challenge.completed %></h3>
+<div class="container">
+  <div class="card card-challenge-show">
+    <div class="card-invite">
+      <%= icon('user-plus', id: 'invite-user') %>
+    </div>
+    <div class="card-image">
+      <%= cl_image_tag("http://res.cloudinary.com/danielphr/image/upload/v1517429633/fctooe8cfedfsxz8eunv.jpg",
+      width: 200, height: 200, crop: :fill) %>
+    </div>
+    <div class="card-title">
+      <h1><%= @challenge.title %></h1>
+    </div>
+    <div class="card-description">
+      <p><%= @challenge.description %></p>
+    </div>
+    <div class="card-dates">
+      <div class="date-start">
+        <p><%= @challenge.start_date %></p>
+      </div>
+      <div class="date-end">
+        <p><%= @challenge.end_date %></p>
+      </div>
+    </div>
+    <div class="card-info">
+      <p>R$ <%= @challenge.value %></p>
+      <p>R$ <%= @challenge.completed %></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Convide um Amigo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Convide um amigo</h1>
+        <%= form_tag users_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Encontre um amigo"
+        %>
+      <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Convidar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.card {
+  text-shadow: 0 1px 1px $light-gray;
+  color: $blue;
+  background-color: white;
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  box-shadow: 1px 1px rgba(249,249,249,0.6);
+}
+.card-challenge-show {
+  width: 75%;
+  height: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+.card-invite {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 25px;
+}
+.card-title {
+  position: absolute;
+  right: 100px;
+  top: 20px;
+}
+.card-image {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.card-description {
+  position: absolute;
+  right: 300px;
+  top: 150px;
+}
+.card-dates {
+  position: absolute;
+  right: 300px;
+  top: 250px;
+  display: inline;
+}
+.card-info {
+  position: absolute;
+  right: 300px;
+  top: 350px;
+}
