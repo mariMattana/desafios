@@ -15,6 +15,11 @@ cancel.addEventListener("click", (event) => {
   modal.style.display = "none";
 });
 
+let confirm = document.getElementById("btn-ok");
+confirm.addEventListener("click", (event) => {
+  modal.style.display = "none";
+});
+
 let users = document.getElementById("search-users");
 users.addEventListener("click", (event) => {
   event.target.classList.add("chosen");
@@ -23,7 +28,11 @@ users.addEventListener("click", (event) => {
 let bets = document.getElementById("bets");
 let sidebar = document.getElementById("sidebar-btn");
 sidebar.addEventListener("click", (event) => {
-  bets.style.display = "none";
+  if (bets.classList.contains("invisible")) {
+    bets.classList.remove("invisible");
+  } else {
+    bets.classList.add("invisible");
+  }
 });
 
 // const inviteUserToBet = (event) => {

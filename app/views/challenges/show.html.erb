@@ -31,8 +31,9 @@
 </div>
 
 <div class="sidebar">
-  <span id="sidebar-btn"><%= icon('sliders') %></span>
+  <%= icon('sliders', id: "sidebar-btn") %>
   <div id="bets">
+    <h3>Bets</h3>
     <% @bets.each do |bet| %>
       <div class="card card-bet">
         <div class="bet-img">
@@ -40,6 +41,7 @@
         </div>
         <h3><%= bet.user.first_name + " " + bet.user.last_name %></h3>
         <p>R$<%= bet.value %></p>
+        <p><%= bet.accepted %></p>
       </div>
     <% end %>
   </div>
@@ -77,7 +79,9 @@
     </div>
     <div class="modal-btns">
       <button id="btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      <button id="btn-ok" type="button" class="btn btn-primary">Convidar</button>
+      <%= link_to challenge_bets_path, method: :post, remote: true  do %>
+        <button id="btn-ok" type="button" class="btn btn-primary">Convidar</button>
+      <% end %>
     </div>
   </div>
 
