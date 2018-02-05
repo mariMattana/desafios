@@ -17,10 +17,11 @@ class BetsController < ApplicationController
   def create
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.new(bet_params)
-    @bet.user = current_user
+    @bet.challenge_id = @challenge.id
     authorize @bet
     if @bet.save
-      redirect_to challenge_bets_path
+      format.html { render 'bets' }
+      format.js  # <-- idem
     else
       render :new
     end
@@ -50,6 +51,6 @@ class BetsController < ApplicationController
   private
 
   def bet_params
-    params.require(:bet).permit(:value)
+    params.require(:bet).permit(:user_id)
   end
 end
