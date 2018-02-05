@@ -17,6 +17,7 @@ cancel.addEventListener("click", (event) => {
 
 let confirm = document.getElementById("btn-ok");
 confirm.addEventListener("click", (event) => {
+  inviteUserToBet();
   modal.style.display = "none";
 });
 
@@ -35,19 +36,25 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-// const inviteUserToBet = (event) => {
-//   fetch("http://localhost:3000/challenges/1/bets", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify({ query: event.currentTarget.value })
-//   })
-//     .then(response => response.json())
-//     .then((data) => {
-//       console.log(data.hits); // Look at local_names.default
-//     });
-// }
+let token = document.getElementById("authenticity_token").innerHTML;
 
-// const input = document.getElementById("search"); // that's an <input id="search">
-// input.addEventListener("keyup", searchAlgoliaPlaces);
+const inviteUserToBet = (event) => {
+  fetch("http://localhost:3000/challenges/1/bets", {
+      method: 'POST',
+      headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': token,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ bet: {user_id: 2} }),
+      credentials: 'same-origin'
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data); // Look at local_names.default
+    });
+}
+
+//const input = document.getElementById("search"); // that's an <input id="search">
+//input.addEventListener("keyup", searchAlgoliaPlaces);
