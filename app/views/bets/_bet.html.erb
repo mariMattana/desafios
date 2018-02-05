@@ -3,6 +3,4 @@
     <%= cl_image_tag(@bet.user.photo, width: 60, height: 60, crop: :fill) %>
   </div>
   <h3><%= @bet.user.first_name + " " + @bet.user.last_name %></h3>
-  <p>R$<%= @bet.value %></p>
-  <p><%= @bet.accepted %></p>
 </div>

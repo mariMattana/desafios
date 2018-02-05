@@ -64,14 +64,12 @@
         </div>
         <ul id="search-users">
           <% @users.each do |user| %>
-            <li>
-              <div class="search-user" id="user-<%= user.id %>">
-                <div class="user-img">
-                  <%= cl_image_tag(user.photo,
+            <li class="search-user" id="user-<%= user.id %>">
+              <div class="user-img">
+                <%= cl_image_tag(user.photo,
                     width: 60, height: 60, crop: :fill) %>
-                </div>
-                <p><%= user.try(:first_name) + " " + user.try(:last_name) %></p>
               </div>
+              <p><%= user.try(:first_name) + " " + user.try(:last_name) %></p>
             </li>
           <% end %>
         </ul>

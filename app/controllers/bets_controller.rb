@@ -20,8 +20,8 @@ class BetsController < ApplicationController
     @bet.challenge_id = @challenge.id
     authorize @bet
     if @bet.save
-      format.html { render 'bets' }
-      format.js  # <-- idem
+      puts "saved"
+      render "bets/create"
     else
       render :new
     end
