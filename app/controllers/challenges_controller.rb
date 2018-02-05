@@ -9,8 +9,8 @@ class ChallengesController < ApplicationController
     else
       @users = User.all
     end
-
     @challenge = Challenge.find(params[:id])
+    @bets = Bet.where(challenge: @challenge)
     authorize @challenge
   end
 

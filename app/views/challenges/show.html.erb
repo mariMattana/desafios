@@ -1,10 +1,12 @@
 <div class="container">
   <div class="card card-challenge-show">
-    <div class="card-invite">
-      <%= icon('user-plus', id: 'invite-user') %>
-    </div>
+    <% if policy(@challenge).invite? %>
+      <div class="card-invite">
+        <%= icon('user-plus', id: 'invite-user') %>
+      </div>
+    <% end %>
     <div class="card-image">
-      <%= cl_image_tag("http://res.cloudinary.com/danielphr/image/upload/v1517429633/fctooe8cfedfsxz8eunv.jpg",
+      <%= cl_image_tag(@challenge.user.photo,
       width: 200, height: 200, crop: :fill) %>
     </div>
     <div class="card-title">
@@ -28,6 +30,21 @@
   </div>
 </div>
 
+<div class="sidebar">
+  <span id="sidebar-btn"><%= icon('sliders') %></span>
+  <div id="bets">
+    <% @bets.each do |bet| %>
+      <div class="card card-bet">
+        <div class="bet-img">
+          <%= cl_image_tag(bet.user.photo, width: 60, height: 60, crop: :fill) %>
+        </div>
+        <h3><%= bet.user.first_name + " " + bet.user.last_name %></h3>
+        <p>R$<%= bet.value %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <!-- The Modal -->
 <div id="add-bet-modal" class="bet-modal">
 
@@ -43,10 +60,10 @@
         <div class="search-btn">
           <%= submit_tag "Pesquise" %>
         </div>
-        <ul>
+        <ul id="search-users">
           <% @users.each do |user| %>
             <li>
-              <div class="search-user">
+              <div class="search-user" id="user-<%= user.id %>">
                 <div class="user-img">
                   <%= cl_image_tag(user.photo,
                     width: 60, height: 60, crop: :fill) %>
@@ -59,8 +76,8 @@
       <% end %>
     </div>
     <div class="modal-btns">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      <button type="button" class="btn btn-primary">Convidar</button>
+      <button id="btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <button id="btn-ok" type="button" class="btn btn-primary">Convidar</button>
     </div>
   </div>
 

@@ -45,3 +45,36 @@
   right: 300px;
   top: 350px;
 }
+.sidebar {
+  display: inline;
+  position: absolute;
+  top: 90px;
+  right: 50px;
+  width: 235px;
+  height: 100%;
+}
+.card-bet {
+  width: 100%;
+  height: 100px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.card-bet .bet-img {
+  position: relative;
+  top: 20px;
+  left: 0;
+}
+.card-bet h3 {
+  position: relative;
+  bottom: 65px;
+  left: 75px;
+  font-size: 25px;
+}
+.card-bet p {
+  position: relative;
+  bottom: 75px;
+  left: 80px;
+}
+#sidebar-btn {
+  margin-left: 225px
+}
