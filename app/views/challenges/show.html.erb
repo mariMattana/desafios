@@ -1,6 +1,87 @@
-<h3><%= @challenge.title %></h3>
-<h3><%= @challenge.description %></h3>
-<h3><%= @challenge.start_date %></h3>
-<h3><%= @challenge.end_date %></h3>
-<h3>R$ <%= @challenge.value %></h3>
-<h3>R$ <%= @challenge.completed %></h3>
+<div class="container">
+  <div class="card card-challenge-show">
+    <% if policy(@challenge).invite? %>
+      <div class="card-invite">
+        <%= icon('user-plus', id: 'invite-user') %>
+      </div>
+    <% end %>
+    <div class="card-image">
+      <%= cl_image_tag(@challenge.user.photo,
+      width: 200, height: 200, crop: :fill) %>
+    </div>
+    <div class="card-title">
+      <h1><%= @challenge.title %></h1>
+    </div>
+    <div class="card-description">
+      <p><%= @challenge.description %></p>
+    </div>
+    <div class="card-dates">
+      <div class="date-start">
+        <p><%= @challenge.start_date %></p>
+      </div>
+      <div class="date-end">
+        <p><%= @challenge.end_date %></p>
+      </div>
+    </div>
+    <div class="card-info">
+      <p>R$ <%= @challenge.value %></p>
+      <p>R$ <%= @challenge.completed %></p>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar">
+  <%= icon('sliders', id: "sidebar-btn") %>
+  <div id="bets">
+    <h3>Bets</h3>
+    <% @bets.each do |bet| %>
+      <div class="card card-bet">
+        <div class="bet-img">
+          <%= cl_image_tag(bet.user.photo, width: 60, height: 60, crop: :fill) %>
+        </div>
+        <h3><%= bet.user.first_name + " " + bet.user.last_name %></h3>
+        <p>R$<%= bet.value %></p>
+        <p><%= bet.accepted %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="add-bet-modal" class="bet-modal">
+
+  <!-- Modal content -->
+  <div class="bet-modal-content">
+    <span class="close" id="modal-close">&times;</span>
+    <h3>Convide um amigo</h3>
+    <div class="search">
+      <%= form_tag challenge_path(@challenge), method: :get do %>
+        <div class="search-bar">
+          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ache um Amigo" %>
+        </div>
+        <div class="search-btn">
+          <%= submit_tag "Pesquise" %>
+        </div>
+        <ul id="search-users">
+          <% @users.each do |user| %>
+            <li>
+              <div class="search-user" id="user-<%= user.id %>">
+                <div class="user-img">
+                  <%= cl_image_tag(user.photo,
+                    width: 60, height: 60, crop: :fill) %>
+                </div>
+                <p><%= user.try(:first_name) + " " + user.try(:last_name) %></p>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="modal-btns">
+      <button id="btn-cancel" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button id="btn-ok" type="button" class="btn btn-primary">Convidar</button>
+
+    </div>
+  </div>
+
+</div>

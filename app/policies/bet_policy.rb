@@ -1,4 +1,4 @@
-class ChallengePolicy < ApplicationPolicy
+class BetPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,7 +6,7 @@ class ChallengePolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    record.accepted == "not_invited"
   end
 
   def update?
@@ -14,10 +14,6 @@ class ChallengePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_is_owner?
-  end
-
-  def invite?
     user_is_owner?
   end
 

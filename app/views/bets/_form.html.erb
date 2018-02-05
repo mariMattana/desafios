@@ -1,5 +1,4 @@
-<%= simple_form_for [@bet] do |f| %>
+<%= simple_form_for [@challenge, @bet] do |f| %>
   <%= f.input :value %>
-  <%= f.input :accepted %>
   <%= f.submit "add a bet", class: "btn btn-primary" %>
 <% end %>

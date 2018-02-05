@@ -1,0 +1,9 @@
+.card {
+  text-shadow: 0 1px 1px $light-gray;
+  color: $blue;
+  background-color: white;
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  box-shadow: 1px 1px rgba(249,249,249,0.6);
+  z-index: 0;
+}

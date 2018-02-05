@@ -11,6 +11,7 @@
       <%= f.input :cpf, required: true %>
       <%= f.input :birthday, required: true %>
       <%= f.input :photo, required: true %>
+      <%= f.input :photo_cache, as: :hidden %>
       <%= f.input :email, required: true %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
