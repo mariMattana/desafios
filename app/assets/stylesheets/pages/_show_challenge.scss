@@ -131,6 +131,10 @@
 }
 .search-user:hover {
   background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.active {
+  border: 3px solid $blue;
 }
 .user-img {
   display:inline-block;
@@ -139,9 +143,6 @@
   padding-left: 30px;
   font-size: 20px;
   display:inline-block;
-}
-.chosen{
-  border: 3px solid $blue;
 }
 .bet-modal h3 {
   margin-bottom: 30px;
@@ -153,5 +154,8 @@
   margin-left: 70%;
 }
 .invisible {
+  display: none;
+}
+#authenticity_token {
   display: none;
 }

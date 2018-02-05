@@ -5,25 +5,51 @@ invite.addEventListener("click", (event) => {
   modal.style.display = "block";
 });
 
+var div = document.getElementById("search-users");
+var users = div.getElementsByClassName("search-user");
+
+function removeAllActives(){
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].className == "search-user active"){
+      users[i].className = "search-user"
+    }
+  }
+}
+
+for (var i = 0; i < users.length; i++) {
+  users[i].addEventListener("click", function() {
+    removeAllActives();
+    this.className += " active";
+  });
+}
+
+function getIdFromActive() {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].className == "search-user active"){
+      let id = users[i].getAttribute("id").toString().split("user-")[1];
+      return id;
+    }
+  }
+}
+
 let close = document.getElementById("modal-close");
 close.addEventListener("click", (event) => {
+  removeAllActives();
   modal.style.display = "none";
 });
 
 let cancel = document.getElementById("btn-cancel");
 cancel.addEventListener("click", (event) => {
+  removeAllActives();
   modal.style.display = "none";
 });
 
 let confirm = document.getElementById("btn-ok");
 confirm.addEventListener("click", (event) => {
-  inviteUserToBet();
+  let id = getIdFromActive();
+  removeAllActives();
+  inviteUserToBet(id);
   modal.style.display = "none";
-});
-
-let users = document.getElementById("search-users");
-users.addEventListener("click", (event) => {
-  event.target.classList.add("chosen");
 });
 
 let bets = document.getElementById("bets");
@@ -37,8 +63,7 @@ sidebar.addEventListener("click", (event) => {
 });
 
 let token = document.getElementById("authenticity_token").innerHTML;
-
-const inviteUserToBet = (event) => {
+let inviteUserToBet = (id) => {
   fetch("http://localhost:3000/challenges/1/bets", {
       method: 'POST',
       headers: {
@@ -47,14 +72,11 @@ const inviteUserToBet = (event) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ bet: {user_id: 2} }),
+      body: JSON.stringify({ bet: {user_id: id } }),
       credentials: 'same-origin'
     })
-    .then(response => response.json())
     .then((data) => {
       console.log(data); // Look at local_names.default
     });
 }
 
-//const input = document.getElementById("search"); // that's an <input id="search">
-//input.addEventListener("keyup", searchAlgoliaPlaces);
