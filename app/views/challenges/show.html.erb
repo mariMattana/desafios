@@ -28,9 +28,11 @@
         <p>R$ <%= @challenge.completed %></p>
       </div>
     </div>
+
     <h3>Challenge Progress</h3>
+
     <% @progresses.each do |progress| %>
-      <div class="card card-progress" id="new-progress-form">
+      <div class="card card-progress" id="new-progress">
         <h3><%= progress.title %></h3>
         <div class="progress-img">
           <%= cl_image_tag(progress.user.photo, width: 60, height: 60, crop: :fill) %>

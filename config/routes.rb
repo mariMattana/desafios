@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :challenges do
     resources :bets
+    resources :progresses
   end
 
   namespace :api, defaults: { format: :json } do
