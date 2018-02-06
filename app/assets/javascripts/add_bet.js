@@ -62,34 +62,32 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-// let token = document.getElementById("authenticity_token").innerHTML;
-// let inviteUserToBet = (id) => {
-//   fetch("http://localhost:3000/challenges/1/bets", {
-//       method: 'POST',
-//       headers: {
-//         'X-Requested-With': 'XMLHttpRequest',
-//         'X-CSRF-Token': token,
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify({ bet: {user_id: id } }),
-//       credentials: 'same-origin'
-//     })
-//     .then((data) => {
-//       console.log(data); // Look at local_names.default
-//     });
-// }
+function addBetToHtml(json) {
+  console.log(json);
 
-// let token = document.getElementById("authenticity_token").innerHTML;
-// let inviteUserToBet = (id) => {
-//   $.ajax({
-//     type: "POST",
-//     url: "http://localhost:3000/challenges/1/bets",
-//     data: { bet: {user_id: id } },
-//     success:(data) ->
-//       alert data.id
-//       return false
-//     error:(data) ->
-//       return false
-//   })
-// }
+  bets.innerHTML += `<div class="card card-bet"><div class="bet-img"> \
+        <img width="60" height="60" src="${json.user.photo.url}" alt="bet"> \
+        </div> \
+        <h3> ${json.user.first_name} ${json.user.last_name} </h3> \
+        <p>R$ ${json.value} </p> \
+        <p> ${json.accepted} </p> \
+      </div>`
+}
+
+let token = document.getElementById("authenticity_token").innerHTML;
+let inviteUserToBet = (id) => {
+  fetch("http://localhost:3000/api/v1/challenges/1/bets", {
+      method: 'POST',
+      body: JSON.stringify({ bet: {user_id: id } }),
+      credentials: 'same-origin',
+      headers: {
+        'X-User-Email': 'daniel.phr@gmail.com',
+        'X-User-Token': "eSWMGzTehFtHuizkCprp",
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => data.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => addBetToHtml(response))
+
+}
