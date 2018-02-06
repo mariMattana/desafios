@@ -18,10 +18,10 @@ class ProgressesController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
     @progress = Progress.new(progress_params)
     @progress.challenge_id = @challenge.id
+    @progress.user_id = current_user
     authorize @progress
     if @progress.save
-      format.html { render 'progresses' }
-      format.js
+      render :show
     else
       render :new
     end
