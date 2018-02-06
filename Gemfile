@@ -19,6 +19,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem "letter_opener", group: :development
 
 group :development do
   gem 'web-console', '>= 3.3.0'

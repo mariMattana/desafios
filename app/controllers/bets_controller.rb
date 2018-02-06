@@ -20,6 +20,7 @@ class BetsController < ApplicationController
     @bet.challenge_id = @challenge.id
     authorize @bet
     if @bet.save
+      UserMailer.invitation(@challenge.user, @bet.user).deliver_now
       puts "saved"
       render "bets/create"
     else
