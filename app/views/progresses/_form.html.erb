@@ -4,6 +4,7 @@
     <%= f.input :description %>
     <%= f.input :date %>
     <%= f.input :photo %>
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit 'Add a progress to Challenge', class: "btn btn-primary" %>
   <% end %>
 </div>

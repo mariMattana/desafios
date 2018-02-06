@@ -17,11 +17,11 @@ class ProgressesController < ApplicationController
   def create
     @challenge = Challenge.find(params[:challenge_id])
     @progress = Progress.new(progress_params)
-    @progress.challenge_id = @challenge.id
-    @progress.user_id = current_user
+    @progress.challenge = @challenge
+    @progress.user = current_user
     authorize @progress
     if @progress.save
-      render :show
+      redirect_to challenge_path(@challenge)
     else
       render :new
     end
@@ -52,6 +52,6 @@ class ProgressesController < ApplicationController
 
   def progress_params
     params.require(:progress).permit(:title, :description, :date, :photo,
-      :user_id, :challenge_id)
+      :photo_cache, :user_id, :challenge_id)
   end
 end
