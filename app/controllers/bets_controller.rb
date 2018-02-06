@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
- def index
+  def index
     @bets = policy_scope(Bet)
   end
 
