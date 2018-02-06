@@ -27,19 +27,6 @@ ActiveRecord::Schema.define(version: 20180205154540) do
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
-  create_table "challenge_progresses", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.date "date"
-    t.string "picture"
-    t.bigint "challenge_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["challenge_id"], name: "index_challenge_progresses_on_challenge_id"
-    t.index ["user_id"], name: "index_challenge_progresses_on_user_id"
-  end
-
   create_table "challenges", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -57,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180205154540) do
     t.string "title"
     t.text "description"
     t.date "date"
-    t.string "picture"
+    t.string "photo"
     t.bigint "challenge_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -91,8 +78,6 @@ ActiveRecord::Schema.define(version: 20180205154540) do
 
   add_foreign_key "bets", "challenges"
   add_foreign_key "bets", "users"
-  add_foreign_key "challenge_progresses", "challenges"
-  add_foreign_key "challenge_progresses", "users"
   add_foreign_key "challenges", "users"
   add_foreign_key "progresses", "challenges"
   add_foreign_key "progresses", "users"

@@ -1,36 +1,47 @@
 <div class="container">
-  <div class="card card-challenge-show">
-    <% if policy(@challenge).invite? %>
-      <div class="card-invite">
-        <%= icon('user-plus', id: 'invite-user') %>
+    <div class="card card-challenge-show">
+      <% if policy(@challenge).invite? %>
+        <div class="card-invite">
+          <%= icon('user-plus', id: 'invite-user') %>
+        </div>
+      <% end %>
+      <div class="card-image">
+        <%= cl_image_tag(@challenge.user.photo,
+        width: 200, height: 200, crop: :fill) %>
+      </div>
+      <div class="card-title">
+        <h1><%= @challenge.title %></h1>
+      </div>
+      <div class="card-description">
+        <p><%= @challenge.description %></p>
+      </div>
+      <div class="card-dates">
+        <div class="date-start">
+          <p><%= @challenge.start_date %></p>
+        </div>
+        <div class="date-end">
+          <p><%= @challenge.end_date %></p>
+        </div>
+      </div>
+      <div class="card-info">
+        <p>R$ <%= @challenge.value %></p>
+        <p>R$ <%= @challenge.completed %></p>
+      </div>
+    </div>
+    <h3>Challenge Progress</h3>
+    <% @progresses.each do |progress| %>
+      <div class="card card-progress">
+        <h3><%= progress.title %></h3>
+        <div class="progress-img">
+          <%= cl_image_tag(progress.user.photo, width: 60, height: 60, crop: :fill) %>
+        </div>
+        <p><%= progress.user.first_name + " " + progress.user.last_name %></p>
+        <p><%= progress.description %></p>
+        <p>Postado em <%= progress.date %></p>
       </div>
     <% end %>
-    <div class="card-image">
-      <%= cl_image_tag(@challenge.user.photo,
-      width: 200, height: 200, crop: :fill) %>
-    </div>
-    <div class="card-title">
-      <h1><%= @challenge.title %></h1>
-    </div>
-    <div class="card-description">
-      <p><%= @challenge.description %></p>
-    </div>
-    <div class="card-dates">
-      <div class="date-start">
-        <p><%= @challenge.start_date %></p>
-      </div>
-      <div class="date-end">
-        <p><%= @challenge.end_date %></p>
-      </div>
-    </div>
-    <div class="card-info">
-      <p>R$ <%= @challenge.value %></p>
-      <p>R$ <%= @challenge.completed %></p>
-    </div>
-  </div>
-
-
 </div>
+
 
 <div class="sidebar">
   <%= icon('sliders', id: "sidebar-btn") %>
@@ -48,6 +59,7 @@
     <% end %>
   </div>
 </div>
+
 
 <!-- The Modal -->
 <div id="add-bet-modal" class="bet-modal">
@@ -85,5 +97,4 @@
       <button id="btn-ok" type="button" class="btn btn-primary">Convidar</button>
     </div>
   </div>
-
 </div>
