@@ -1,6 +1,6 @@
 class ProgressesController < ApplicationController
   def index
-    @progresses = policy_scope(progress)
+    @progresses = policy_scope(Progress)
   end
 
   def show
@@ -42,7 +42,7 @@ class ProgressesController < ApplicationController
   end
 
   def destroy
-    @progress = progress.find(params[:id])
+    @progress = Progress.find(params[:id])
     @progress.destroy
     authorize @progress
     redirect_to challenge_bets_path
@@ -51,6 +51,7 @@ class ProgressesController < ApplicationController
   private
 
   def progress_params
-    params.require(:progress).permit(:title, :description, :date, :picture)
+    params.require(:progress).permit(:title, :description, :date, :photo,
+      :user_id, :challenge_id)
   end
 end

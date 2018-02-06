@@ -1,6 +1,7 @@
 Bet.destroy_all
 Challenge.destroy_all
 User.destroy_all
+Progress.destroy_all
 
 puts "Creating Users ..."
 users = [
@@ -34,4 +35,23 @@ bets = [
 bets.each do |bet|
  new_bet = Bet.create!(value: bet[:value], user_id: bet[:user_id], challenge_id: bet[:challenge_id])
 
+end
+
+
+puts "Creating Progresses ..."
+progresses = [{
+    title: "Uhu, emagreci 1 Kg",
+    description: "testestetsestest\ntestestestetsetstestest\ntesteteststse",
+    date: "15/02/2018",
+    url: "http://res.cloudinary.com/danielphr/image/upload/v1517776006/einsten_oimozu.jpg",
+    user_id: 1,
+    challenge_id: 1
+}]
+
+progresses.each do |progress|
+ new_progress = Progress.new(title: progress[:title],
+  description: progress[:description], date: progress[:date],
+  user_id: progress[:user_id], challenge_id: progress[:challenge_id])
+ new_progress.remote_photo_url = progress[:url]
+ new_progress.save
 end

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20180205154540) do
     t.string "title"
     t.text "description"
     t.date "date"
-    t.string "picture"
+    t.string "photo"
     t.bigint "challenge_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
