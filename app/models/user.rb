@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  acts_as_token_authenticatable
+
   has_many :challenges
   has_many :bets
   has_many :progresses
