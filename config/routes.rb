@@ -7,4 +7,12 @@ Rails.application.routes.draw do
   resources :challenges do
     resources :bets
   end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :challenges, only: [ :index, :show, :update, :create, :destroy ] do
+        resources :bets, only: [ :index, :show, :update, :create, :destroy ]
+      end
+    end
+  end
 end
