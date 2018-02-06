@@ -62,21 +62,34 @@ sidebar.addEventListener("click", (event) => {
   }
 });
 
-let token = document.getElementById("authenticity_token").innerHTML;
-let inviteUserToBet = (id) => {
-  fetch("http://localhost:3000/challenges/1/bets", {
-      method: 'POST',
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': token,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ bet: {user_id: id } }),
-      credentials: 'same-origin'
-    })
-    .then((data) => {
-      console.log(data); // Look at local_names.default
-    });
-}
+// let token = document.getElementById("authenticity_token").innerHTML;
+// let inviteUserToBet = (id) => {
+//   fetch("http://localhost:3000/challenges/1/bets", {
+//       method: 'POST',
+//       headers: {
+//         'X-Requested-With': 'XMLHttpRequest',
+//         'X-CSRF-Token': token,
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({ bet: {user_id: id } }),
+//       credentials: 'same-origin'
+//     })
+//     .then((data) => {
+//       console.log(data); // Look at local_names.default
+//     });
+// }
 
+// let token = document.getElementById("authenticity_token").innerHTML;
+// let inviteUserToBet = (id) => {
+//   $.ajax({
+//     type: "POST",
+//     url: "http://localhost:3000/challenges/1/bets",
+//     data: { bet: {user_id: id } },
+//     success:(data) ->
+//       alert data.id
+//       return false
+//     error:(data) ->
+//       return false
+//   })
+// }

@@ -6,7 +6,7 @@ class BetPolicy < ApplicationPolicy
   end
 
   def create?
-    record.accepted == "not_invited"
+    true
   end
 
   def update?
