@@ -11,6 +11,7 @@ class ChallengesController < ApplicationController
     end
     @challenge = Challenge.find(params[:id])
     @bets = Bet.where(challenge: @challenge)
+    @progress = Progress.new
     @progresses = Progress.where(challenge: @challenge)
     authorize @challenge
   end
