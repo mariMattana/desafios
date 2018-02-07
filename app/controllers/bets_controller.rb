@@ -20,7 +20,7 @@ class BetsController < ApplicationController
     @bet.challenge_id = @challenge.id
     authorize @bet
     if @bet.save
-      UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+      inviteUserToBet
     else
       render :new
     end
@@ -51,5 +51,9 @@ class BetsController < ApplicationController
 
   def bet_params
     params.require(:bet).permit(:user_id)
+  end
+
+  def inviteUserToBet
+    UserMailer.invitation(@challenge.user, @bet.user).deliver_now
   end
 end
