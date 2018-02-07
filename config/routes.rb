@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :challenges do
-    resources :bets
-    resources :progresses
+  resources :challenges, :path => "desafios" do
+    resources :bets, :path => "convites"
+    resources :progresses, :path => "progressos"
   end
 
   namespace :api, defaults: { format: :json } do
