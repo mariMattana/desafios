@@ -1,4 +1,7 @@
 class ChallengesController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: :index
+
   def index
     @challenges = policy_scope(Challenge).order(start_date: :desc)
   end
