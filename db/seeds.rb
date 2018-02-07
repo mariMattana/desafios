@@ -12,12 +12,16 @@ users = [
   {email: "rodrigo@rodrigo.com", password: "Rodrigo", first_name: "Rodrigo", last_name: "Salomão", nickname: "rodrigão", birthday: "06/09/1986", cpf: "555.555.555-55", url: "http://res.cloudinary.com/danielphr/image/upload/v1518023165/nlfxswr0qnvhdncghzjh.jpg"},
   {email: "cristiane@cristiane.com", password: "Cristiane", first_name: "Cristiane", last_name: "Silva", nickname: "cris", birthday: "12/11/1991", cpf: "666.666.666-66", url: "http://res.cloudinary.com/danielphr/image/upload/v1518023404/qglr7tbqy081si9khpvb.jpg"},
   {email: "rafael@rafael.com", password: "Rafael", first_name: "Rafael", last_name: "Leão", nickname: "rafa", birthday: "04/05/1986", cpf: "777.777.777-77", url: "http://res.cloudinary.com/danielphr/image/upload/v1518023680/rafael_xadhec.jpg"},
-  {email: "bruna@bruna.com", password: "Bruna", first_name: "Bruna", last_name: "Lima", nickname: "bru", birthday: "08/08/1994", cpf: "888.888.888-88", url: "http://res.cloudinary.com/danielphr/image/upload/v1518023852/bruna_hqofko.jpg"}
+  {email: "bruna@bruna.com", password: "Bruna123", first_name: "Bruna", last_name: "Lima", nickname: "bru", birthday: "08/08/1994", cpf: "888.888.888-88", url: "http://res.cloudinary.com/danielphr/image/upload/v1518023852/bruna_hqofko.jpg"}
 ]
 users.each do |user|
- new_user = User.new(email: user[:email], password: user[:password], first_name: user[:first_name], last_name: user[:last_name], nickname: user[:nickname], birthday: user[:birthday], cpf: user[:cpf])
- new_user.remote_photo_url = user[:url]
- new_user.save
+  new_user = User.new(email: user[:email], password: user[:password], first_name: user[:first_name], last_name: user[:last_name], nickname: user[:nickname], birthday: user[:birthday], cpf: user[:cpf])
+  new_user.remote_photo_url = user[:url]
+  if new_user.save
+    puts "user" + i.to_s + "created"
+  else
+    puts "error user"
+  end
 end
 
 puts "Creating Challenges ..."

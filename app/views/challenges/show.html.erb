@@ -16,17 +16,18 @@
       <div class="card-description">
         <p><%= @challenge.description %></p>
       </div>
-      <div class="card-dates">
-        <div class="date-start">
-          <p><%= @challenge.start_date %></p>
-        </div>
-        <div class="date-end">
-          <p><%= @challenge.end_date %></p>
-        </div>
+      <div class="card-date">
+        <% if @challenge.completed %>
+          <%= icon("check-circle", class: "check-challenge-completion") %><span> Desafio Alcançado</span>
+        <% else %>
+          <h3>Faltam <span class="date-left"><%= (@challenge.end_date - Date.today).to_i %></span> dias</h3>
+        <% end %>
+      </div>
+      <div class="card-start-date">
+        <p>Início: <%= @challenge.start_date.strftime("%d/%m/%y") %> </p>
       </div>
       <div class="card-info">
-        <p>R$ <%= @challenge.value %></p>
-        <p>R$ <%= @challenge.completed %></p>
+        <p>R$ <%= @challenge.value %>,00</p>
       </div>
     </div>
 
