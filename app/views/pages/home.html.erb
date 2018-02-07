@@ -3,12 +3,46 @@
   <div class="banner-content">
     <h1>Bem Vindo ao meusdesafios.com</h1>
     <p>Alcance os seus objetivos se desafiando</p>
-    <a class="btn btn-danger btn-lg">Explorar</a>
-    <a class="btn btn-primary btn-lg">Me desafiar</a>
+    <%= link_to "Explorar",challenges_path, class: "btn btn-danger btn-lg button button-red" %>
+    <%= link_to "Me Desafiar",new_challenge_path, class: "btn btn-primary btn-lg button" %>
   </div>
 </div>
+
+<div class="how-works">
+  <h3>Como Funciona</h3>
+  <div class="row">
+
+    <div class="col-sm-4 col-xs-12">
+      <h1 class="step-number">1</h1>
+      <div class="card card-how-works" id="first-step">
+        <p>Crie um desafio.</p>
+        <p>Defina uma meta e escolha a data de início e fim.</p>
+        <p>Por fim, defina um valor.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-xs-12">
+      <h1 class="step-number">2</h1>
+      <div class="card card-how-works" id="second-step">
+        <p>Convide amigos para participar do seu desafio.</p>
+        <p>Agora parte do valor do seu desafio será disputado entre vocês.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-4 col-xs-12">
+      <h1 class="step-number">3</h1>
+      <div class="card card-how-works" id="third-step">
+        <p>Se você completar o desafio, você recebe o seu dinheiro mais o do seus amigos.</p>
+        <p>Se você não completar o desafio, seu dinheiro é doado para uma instituição de caridade.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="experiences">
   <h3>Depoimentos</h3>
+
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
       <div class="experience-img">
@@ -24,9 +58,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-3">
-
-    </div>
+    <div class="col-md-3"></div>
     <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="user-experience" id="second-experience">
         <p>Criei o desafio de parar de fumar e consegui.</p>
@@ -55,20 +87,21 @@
   </div>
 
 </div>
+
 <div class="charity-institutions">
   <h3>Instituições de Caridade</h3>
   <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= image_tag('instituto_ayrton_senna.jpg') %>
+      <%= image_tag('instituto_ayrton_senna.png') %>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
       <%= image_tag('instituto_cancer_infantil.png') %>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= image_tag('sos-mata-atlantica.jpg') %>
+      <%= image_tag('sos-mata-atlantica.png') %>
     </div>
     <div class="col-md-3 col-sm-6 col-xs-12">
-      <%= image_tag('abrace.jpg') %>
+      <%= image_tag('abrace.png') %>
     </div>
   </div>
 </div>
