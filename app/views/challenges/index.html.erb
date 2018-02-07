@@ -1,11 +1,31 @@
 <div class="container">
   <% @challenges.each do |challenge| %>
-    <h3><%= challenge.title %></h3>
-    <h3><%= challenge.description %></h3>
-    <h3><%= challenge.start_date %></h3>
-    <h3><%= challenge.end_date %></h3>
-    <h3>R$ <%= challenge.value %></h3>
-    <h3>R$ <%= challenge.completed %></h3>
-    <hr>
+    <%= link_to challenge_path(challenge) do %>
+      <div class="card card-challenge-index">
+        <div class="card-image-index">
+          <%= cl_image_tag(challenge.user.photo,
+          width: 200, height: 200, crop: :fill) %>
+        </div>
+        <div class="card-title-index">
+          <h1><%= challenge.title %></h1>
+        </div>
+        <div class="card-description-index">
+          <p><%= challenge.description %></p>
+        </div>
+        <div class="card-date-index">
+          <% if challenge.completed %>
+            <%= icon("check-circle", class: "check-challenge-completion") %><span> Desafio Alcançado</span>
+          <% else %>
+            <h3>Faltam <span class="date-left"><%= (challenge.end_date - Date.today).to_i %></span> dias</h3>
+          <% end %>
+        </div>
+        <div class="card-start-date-index">
+          <p>Início: <%= challenge.start_date.strftime("%d/%m/%y") %> </p>
+        </div>
+        <div class="card-info-index">
+          <p>R$ <%= challenge.value %>,00</p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 </div>

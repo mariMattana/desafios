@@ -1,0 +1,104 @@
+.card-challenge-index {
+  width: 75%;
+  height: 300px;
+  margin: 20px;
+  position: relative;
+  background-color: #e5e5e5 !important;
+}
+.card-invite {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 25px;
+}
+.card-image-index {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+.card-image-index img {
+  border-radius: 50%;
+}
+.card-title-index {
+  position: absolute;
+  right: 70px;
+  top: 10px;
+  padding: 0;
+  width: 500px;
+}
+.card-title-index h1 {
+  padding: 10px;
+  margin: 0;
+  font-size: 35px;
+}
+.card-description-index {
+  position: absolute;
+  right: 70px;
+  top: 100px;
+  height: 100px;
+  width: 500px;
+}
+.card-date-index {
+  position: absolute;
+  left: 385px;
+  bottom: 15px;
+  padding: 0;
+}
+.card-date-index h3 {
+  margin: 0;
+  padding: 10px;
+}
+.card-date-index i {
+  font-size: 70px;
+}
+.date-left {
+  border-radius: 50%;
+  background-color: white;
+  padding: 10px;
+  font-size: 40px;
+}
+.card-start-date-index {
+  position: absolute;
+  left: 55px;
+  bottom: 0px;
+}
+.card-info-index {
+  position: absolute;
+  bottom: 30px;
+  left: 75px;
+}
+.sidebar {
+  display: inline;
+  position: absolute;
+  top: 90px;
+  right: 50px;
+  width: 235px;
+  height: 100%;
+}
+.card-bet {
+  width: 100%;
+  height: 100px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.card-bet .bet-img {
+  position: relative;
+  top: 20px;
+  left: 0;
+}
+.card-bet h3 {
+  position: relative;
+  bottom: 65px;
+  left: 65px;
+  font-size: 25px;
+}
+.card-bet p {
+  position: relative;
+  bottom: 75px;
+  left: 80px;
+}
+.check-challenge-completion {
+  color: green;
+  font-size: 35px;
+  margin-left: 70px;
+}

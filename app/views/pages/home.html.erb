@@ -2,8 +2,8 @@
   <div class="banner-content">
     <h1>Bem Vindo ao meusdesafios.com</h1>
     <p>Alcance os seus objetivos se desafiando</p>
-    <a class="btn btn-danger btn-lg button button-red">Explorar</a>
-    <a class="btn btn-primary btn-lg button">Me desafiar</a>
+    <%= link_to "Explorar",challenges_path, class: "btn btn-danger btn-lg button button-red" %>
+    <%= link_to "Me Desafiar",new_challenge_path, class: "btn btn-primary btn-lg button" %>
   </div>
 </div>
 
