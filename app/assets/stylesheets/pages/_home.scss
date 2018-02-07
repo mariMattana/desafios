@@ -2,7 +2,7 @@ body {
   background-color: white;
 }
 .banner {
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url("http://localhost:3000/assets/banner-1f6b50b93cd2a7f4b4f9896f7d127618348a7096b66773f120db2606005d2eeb.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), asset-url("banner.jpg");
   width: 100%;
   color: white;
   text-align: center;
