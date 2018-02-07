@@ -1,3 +1,4 @@
+<%= content_for :title, "Desafio"%>
 <div class="container">
     <div class="card card-challenge-show">
       <% if policy(@challenge).invite? %>
@@ -29,9 +30,12 @@
       </div>
     </div>
 
-    <h3>Challenge Progress</h3>
+    <div class="flex-space-around">
+      <h1>Meus Progressos</h1>
+      <button class="form-progress-button" onclick="displayProgressForm()"><%= icon("comments", class: "icon-button-progress") %></button>
+    </div>
 
-
+    <%= render "form_progress" %>
 
     <% @progresses.each do |progress| %>
       <div class="card card-progress" id="new-progress">
