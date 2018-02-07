@@ -3,3 +3,19 @@
   border: none;
   margin-right: 10px;
 }
+
+.form-progress-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.icon-button-progress {
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.6);
+  &:hover {
+    color:yellow;
+    background-color:yellow;
+  }
+}
