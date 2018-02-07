@@ -64,19 +64,30 @@ sidebar.addEventListener("click", (event) => {
 
 function addBetToHtml(json) {
   console.log(json);
-
-  bets.innerHTML += `<div class="card card-bet"><div class="bet-img"> \
-        <img width="60" height="60" src="${json.user.photo.url}" alt="bet"> \
+    if (json.accepted == "accepted") {
+      bets.innerHTML += `<div class="card card-bet accepted">`;
+    } else if (json.accepted == "declined"){
+      bets.innerHTML += `<div class="card card-bet declined">`;
+    } else {
+      bets.innerHTML += `<div class="card card-bet waiting_confirmation">`;
+    }
+    bets.innerHTML += `<div class="bet-img"> \
+    <img width="60" height="60" src="${json.user.photo.url}" alt="bet"> \
         </div> \
-        <h3> ${json.user.first_name} ${json.user.last_name} </h3> \
-        <p>R$ ${json.value} </p> \
-        <p> ${json.accepted} </p> \
-      </div>`
+        <h3> ${json.user.first_name} ${json.user.last_name} </h3>`;
+    if (json.accepted == "accepted") {
+      bets.innerHTML += `<p> ${json.accepted} </p></div>`
+    } else {
+      bets.innerHTML += `</div>`;
+    }
 }
 
 let token = document.getElementById("authenticity_token").innerHTML;
 let inviteUserToBet = (id) => {
-  fetch("http://localhost:3000/api/v1/challenges/1/bets", {
+  let challengeId = window.location.href;
+  challengeId = challengeId.slice(-1);
+  console.log(challengeId);
+  fetch(`http://localhost:3000/api/v1/challenges/${challengeId}/bets`, {
       method: 'POST',
       body: JSON.stringify({ bet: {user_id: id } }),
       credentials: 'same-origin',
