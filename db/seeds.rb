@@ -17,11 +17,7 @@ users = [
 users.each do |user|
   new_user = User.new(email: user[:email], password: user[:password], first_name: user[:first_name], last_name: user[:last_name], nickname: user[:nickname], birthday: user[:birthday], cpf: user[:cpf])
   new_user.remote_photo_url = user[:url]
-  if new_user.save
-    puts "user" + i.to_s + "created"
-  else
-    puts "error user"
-  end
+  new_user.save
 end
 
 puts "Creating Challenges ..."
