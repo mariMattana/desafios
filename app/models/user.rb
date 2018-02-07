@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   private
 
