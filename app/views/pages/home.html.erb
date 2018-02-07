@@ -1,2 +1,73 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-content">
+    <h1>Bem Vindo ao meusdesafios.com</h1>
+    <p>Alcance os seus objetivos se desafiando</p>
+    <a class="btn btn-danger btn-lg">Explorar</a>
+    <a class="btn btn-primary btn-lg">Me desafiar</a>
+  </div>
+</div>
+<div class="experiences">
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="user-img">
+        <%= image_tag('camila.jpg') %>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="user-experience" id="first-experience">
+        <p>Perdi 10kgs utilizando o meusdesafios.com.</p>
+        <p>Adorei a experiência, com certeza me motivou muito a conquistar meus objetivos.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="user-experience" id="second-experience">
+        <p>Criei o desafio de parar de fumar e consegui.</p>
+        <p>Hoje sou livre do vício e muito mais feliz, graças ao meusobjetivos.com.</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="user-img">
+        <%= image_tag('marcelo.jpg') %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="user-img">
+        <%= image_tag('fernanda.jpg') %>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="user-experience" id="third-experience">
+        <p>O meusdesafios.com me ajudou a conquistar meu primeiro carro.</p>
+        <p>Juntei um pouco cada mês com ajuda da plataforma.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="charity-institutions">
+  <h3>Instituições de Caridade</h3>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= image_tag('instituto_ayrton_senna.jpg') %>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= image_tag('instituto_cancer_infantil.png') %>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= image_tag('sos-mata-atlantica.jpg') %>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <%= image_tag('abrace.jpg') %>
+    </div>
+  </div>
+</div>

@@ -21,8 +21,6 @@ class BetsController < ApplicationController
     authorize @bet
     if @bet.save
       UserMailer.invitation(@challenge.user, @bet.user).deliver_now
-      puts "saved"
-      render "bets/create"
     else
       render :new
     end
