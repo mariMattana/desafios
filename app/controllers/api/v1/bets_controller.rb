@@ -23,7 +23,7 @@ class Api::V1::BetsController < Api::V1::BaseController
     @bet.challenge_id = @challenge.id
     authorize @bet
     if @bet.save
-      UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+      # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
       render :show, status: :created
     else
       render_error
