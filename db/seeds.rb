@@ -72,5 +72,5 @@ progresses.each do |progress|
   description: progress[:description], date: progress[:date],
   user_id: progress[:user_id], challenge_id: progress[:challenge_id])
  new_progress.remote_photo_url = progress[:url]
- new_progress.save
+ new_progress.save!
 end
