@@ -61,19 +61,7 @@
   <div id="bets">
     <h3>Bets</h3>
     <% @bets.each do |bet| %>
-
-
-
-        <% if bet.accepted == "accepted" %>
-          <div class="card card-bet accepted">
-        <% elsif bet.accepted == "declined" %>
-          <div class="card card-bet declined">
-        <% elsif bet.accepted == "waiting_confirmation" %>
-          <div class="card card-bet waiting_confirmation">
-        <% end %>
-
         <div class="card card-bet <%= bet.accepted %>">
-
           <div class="bet-img">
             <%= cl_image_tag(bet.user.photo, width: 60, height: 60, crop: :fill) %>
           </div>

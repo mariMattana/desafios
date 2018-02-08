@@ -56,5 +56,6 @@ class BetsController < ApplicationController
 
   def inviteUserToBet
     UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+    # notificate user
   end
 end
