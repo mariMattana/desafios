@@ -24,6 +24,7 @@
 
 .card-progress-image img{
   border-radius: 50%;
+  font-size: 25px;
 }
 
 .card-progress-title {
@@ -31,7 +32,7 @@
   top: 10px;
   padding: 0;
   margin: 0;
-  left: 25%;
+  left: 30%;
 }
 
 .card-progress-desc {
@@ -39,7 +40,7 @@
   top: 100px;
   padding: 0;
   margin: 0;
-  left: 25%;
+  left: 30%;
 }
 
 .card-progress-date {
@@ -50,3 +51,14 @@
   margin: 0;
 }
 
+.card-progress-name {
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+}
+
+.card-progress-img {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
