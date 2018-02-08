@@ -8,7 +8,7 @@ class ChallengesController < ApplicationController
 
   def show
     if params[:query].present?
-      @users = User.where(first_name: params[:query])
+      @users =  User.search_by_first_and_last_name(params[:query])
     else
       @users = User.all
     end

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180206140621) do
   create_table "bets", force: :cascade do |t|
     t.integer "value"
     t.boolean "completed"
-    t.integer "accepted", default: 0
+    t.integer "accepted", default: 1
     t.bigint "user_id"
     t.bigint "challenge_id"
     t.datetime "created_at", null: false

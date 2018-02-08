@@ -104,5 +104,49 @@ let inviteUserToBet = (id) => {
     .then(data => data.json())
     .catch(error => console.error('Error:', error))
     .then(response => addBetToHtml(response))
-
 }
+
+let searchBtn = document.getElementById("search-btn");
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  let query = document.getElementById("search-bar").value;
+  fetch(`http://localhost:3000/api/v1/users?query=${query}`, {
+    method: 'GET'
+  })
+  .then(data => data.json())
+  .catch(error => console.error('Error:', error))
+  .then(response => updateUsersInSearch(response))
+});
+
+function updateUsersInSearch(users) {
+  let searchUsers = document.getElementById("search-users");
+  while (searchUsers.firstChild) {
+      searchUsers.removeChild(searchUsers.firstChild);
+  }
+  for (let i in users) {
+    console.log(users[i]);
+    let li = document.createElement("li");
+    let divUserImg = document.createElement("div");
+    let img = document.createElement("img");
+    let p = document.createElement("p");
+    searchUsers.appendChild(li);
+    li.appendChild(divUserImg);
+    divUserImg.appendChild(img);
+    divUserImg.appendChild(p);
+    li.classList.add("search-user");
+    li.id = "user-" + users[i].id;
+    divUserImg.classList.add("userImg");
+    img.setAttribute("width", "60");
+    img.setAttribute("height", "60");
+    img.setAttribute("src", users[i].photo.url);
+    p.innerHTML = users[i].first_name + " " + users[i].last_name;
+  };
+
+};
+
+
+
+
+
+
+
