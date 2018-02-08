@@ -21,7 +21,7 @@ class BetsController < ApplicationController
     @bet.accepted = 1
     authorize @bet
     if @bet.save
-      inviteUserToBet
+      # inviteUserToBet
     else
       render :new
     end
