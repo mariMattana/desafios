@@ -2,17 +2,21 @@ body {
   background-color: white;
 }
 .banner {
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518027984/banner_a9nqy4.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(40,40,40,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
   width: 100%;
-  color: white;
+  color: $light-red;
   text-align: center;
-  height: 100vh;
+  height: calc(100vh - 70px);
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0;
+}
+.banner-content {
+  margin-top: 0;
+  margin-bottom: 20%;
 }
 .banner h1 {
   font-size: 50px;
@@ -28,6 +32,7 @@ body {
 }
 .how-works {
   background-color: $light-gray;
+  color: $dark-gray;
   margin-top: 0;
   padding-bottom: 50px;
 }
@@ -41,17 +46,16 @@ body {
   margin: 0 auto;
   width: 300px;
   background-color: white;
-  color: #666666;
   padding: 50px;
   position: relative;
   z-index: 0;
 }
 .step-number {
-  border: 2px solid #666666;
+  background-color: white;
+  border: 2px solid $dark-gray;
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  background-color: $light-gray;
   text-align: center;
   position: absolute;
   top: -40px;

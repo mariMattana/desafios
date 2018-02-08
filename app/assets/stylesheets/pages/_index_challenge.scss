@@ -1,52 +1,42 @@
 .card-challenge-index {
-  width: 75%;
-  height: 300px;
+  width: 40%;
+  height: 200px;
   margin: 20px;
+  margin-left: 0;
   position: relative;
-  background-color: #e5e5e5 !important;
-}
-.card-invite {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 25px;
+  background-color: $light-gray;
+  color: $red;
 }
 .card-image-index {
   position: absolute;
   left: 20px;
-  top: 20px;
+  top: 35px;
 }
 .card-image-index img {
   border-radius: 50%;
 }
 .card-title-index {
   position: absolute;
-  right: 70px;
-  top: 10px;
+  right: 20px;
+  top: 30px;
   padding: 0;
-  width: 500px;
+  width: 270px;
 }
 .card-title-index h1 {
   padding: 10px;
   margin: 0;
-  font-size: 35px;
-}
-.card-description-index {
-  position: absolute;
-  right: 70px;
-  top: 100px;
-  height: 100px;
-  width: 500px;
+  font-size: 20px;
 }
 .card-date-index {
   position: absolute;
-  left: 385px;
+  left: 185px;
   bottom: 15px;
   padding: 0;
 }
 .card-date-index h3 {
   margin: 0;
   padding: 10px;
+  font-size: 15px;
 }
 .card-date-index i {
   font-size: 70px;
@@ -55,17 +45,7 @@
   border-radius: 50%;
   background-color: white;
   padding: 10px;
-  font-size: 40px;
-}
-.card-start-date-index {
-  position: absolute;
-  left: 55px;
-  bottom: 0px;
-}
-.card-info-index {
-  position: absolute;
-  bottom: 30px;
-  left: 75px;
+  font-size: 20px;
 }
 .check-challenge-completion {
   color: green;
