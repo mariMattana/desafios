@@ -63,22 +63,26 @@ sidebar.addEventListener("click", (event) => {
 });
 
 function addBetToHtml(json) {
-  console.log(json);
-    if (json.accepted == "accepted") {
-      bets.innerHTML += `<div class="card card-bet accepted">`;
-    } else if (json.accepted == "declined"){
-      bets.innerHTML += `<div class="card card-bet declined">`;
-    } else {
-      bets.innerHTML += `<div class="card card-bet waiting_confirmation">`;
-    }
-    bets.innerHTML += `<div class="bet-img"> \
-    <img width="60" height="60" src="${json.user.photo.url}" alt="bet"> \
-        </div> \
-        <h3> ${json.user.first_name} ${json.user.last_name} </h3>`;
-    if (json.accepted == "accepted") {
-      bets.innerHTML += `<p> ${json.accepted} </p></div>`
-    } else {
-      bets.innerHTML += `</div>`;
+    let divCard = document.createElement("div");
+    let divBetImg = document.createElement("div");
+    let img = document.createElement("img");
+    let h3 = document.createElement("h3");
+    bets.appendChild(divCard);
+    divCard.appendChild(divBetImg);
+    divBetImg.appendChild(img);
+    divCard.appendChild(h3);
+    divCard.classList.add("card");
+    divCard.classList.add("card-bet");
+    divCard.classList.add(json.accepted);
+    divBetImg.classList.add("bet-img");
+    img.setAttribute("width", "60");
+    img.setAttribute("height", "60");
+    img.setAttribute("src", json.user.photo.url);
+    h3.innerHTML = json.user.first_name + " " + json.user.last_name;
+    if (json.accepted) {
+      let p = document.createElement("p");
+      p.innerHTML = json.value;
+      divCard.appendChild(p);
     }
 }
 

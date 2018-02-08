@@ -21,9 +21,10 @@ class Api::V1::BetsController < Api::V1::BaseController
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.new(bet_params)
     @bet.challenge_id = @challenge.id
+    @bet.accepted = 1
     authorize @bet
     if @bet.save
-      # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+      inviteUserToBet
       render :show, status: :created
     else
       render_error
@@ -49,5 +50,9 @@ class Api::V1::BetsController < Api::V1::BaseController
   def render_error
     render json: { errors: @bet.errors.full_messages },
       status: :unprocessable_entity
+  end
+
+  def inviteUserToBet
+    UserMailer.invitation(@challenge.user, @bet.user).deliver_now
   end
 end

@@ -18,6 +18,7 @@ class BetsController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.new(bet_params)
     @bet.challenge_id = @challenge.id
+    @bet.accepted = 1
     authorize @bet
     if @bet.save
       inviteUserToBet
