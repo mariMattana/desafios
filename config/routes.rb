@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     resources :progresses, :path => "progressos"
   end
 
-  get "api/v1/users/:query", to: "users#index", as: :users
+  #get "api/v1/users", to: "users#index", as: :users
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :users, only: [:index]
       resources :challenges, only: [ :index, :show, :update, :create, :destroy ] do
         resources :bets, only: [ :index, :show, :update, :create, :destroy ]
       end

@@ -85,12 +85,12 @@
     <span class="close" id="modal-close">&times;</span>
     <h3>Convide um amigo</h3>
     <div class="search">
-      <%= form_tag challenge_path(@challenge), method: :get do %>
+      <%= form_tag challenge_path(@challenge), method: :get, remote: true do %>
         <div class="search-bar">
-          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Ache um Amigo" %>
+          <%= text_field_tag :query, params[:query], class: "form-control", id: "search-bar", placeholder: "Ache um Amigo" %>
         </div>
         <div class="search-btn">
-          <%= submit_tag "Pesquise" %>
+          <%= submit_tag "Pesquise", id: "search-btn" %>
         </div>
         <ul id="search-users">
           <% @users.each do |user| %>
