@@ -9,6 +9,8 @@ class CreateChallenges < ActiveRecord::Migration[5.1]
       t.boolean :completed, default: false
       t.references :user, foreign_key: true
 
+      add_monetize :challenges, :value, currency: { present: true }
+
       t.timestamps
     end
   end
