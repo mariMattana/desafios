@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :notifications, only: [:index, :update]
       resources :users, only: [:index]
       resources :challenges, only: [ :index, :show, :update, :create, :destroy ] do
         resources :bets, only: [ :index, :show, :update, :create, :destroy ]
