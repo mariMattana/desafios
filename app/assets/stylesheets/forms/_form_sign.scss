@@ -1,0 +1,80 @@
+.form-style-3{
+    max-width: auto;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    margin-top: 50px;
+}
+
+.form-style-3 fieldset{
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin: 0px 0px 10px 0px;
+    border: 1px solid $light-gray;
+    padding: 20px;
+    background: $ultra-light-gray;
+    box-shadow: inset 0px 0px 15px $light-gray;
+    -moz-box-shadow: inset 0px 0px 15px $light-gray;
+    -webkit-box-shadow: inset 0px 0px 15px $light-gray;
+}
+
+.form-style-3 label {
+  color: rgba(0,0,0,0.7);
+}
+
+.form-style-3 fieldset h2{
+    color: $strong-red;
+    font-weight: bold;
+    font-size: 38px;
+    padding-bottom: 30px;
+}
+
+.form-style-3 input[type=text],
+.form-style-3 input[type=date],
+.form-style-3 input[type=datetime],
+.form-style-3 input[type=number],
+.form-style-3 input[type=search],
+.form-style-3 input[type=time],
+.form-style-3 input[type=url],
+.form-style-3 input[type=email],
+.form-style-3 input[type=password],
+.form-style-3 select,
+.form-style-3 textarea{
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid $light-gray;
+    outline: none;
+    color: rgba(0,0,0,0.6);
+    padding: 5px 8px 5px 8px;
+    box-shadow: inset 1px 1px 4px $light-gray;
+    -moz-box-shadow: inset 1px 1px 4px $light-gray;
+    -webkit-box-shadow: inset 1px 1px 4px $light-gray;
+    background: $ultra-light-gray;
+    width:90%;
+}
+.form-style-3  input[type=submit],
+.form-style-3  input[type=button],
+// .form-style-3  input[type=file]
+{
+    background: $red;
+    border: 1px solid $strong-red;
+    padding: 5px 15px 5px 15px;
+    color: white;
+    box-shadow: inset -1px -1px 3px $red;
+    -moz-box-shadow: inset -1px -1px 3px $red;
+    -webkit-box-shadow: inset -1px -1px 3px $red;
+    border-radius: 3px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sign-in-form {
+  width:30%;
+}
+
+.forgot_password {
+  color: $red;
+}
