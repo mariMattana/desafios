@@ -24,7 +24,7 @@ class Api::V1::BetsController < Api::V1::BaseController
     @bet.accepted = 1
     authorize @bet
     if @bet.save
-      # inviteUserToBet
+      inviteUserToBet
       render :show, status: :created
     else
       render_error
@@ -54,5 +54,6 @@ class Api::V1::BetsController < Api::V1::BaseController
 
   def inviteUserToBet
     UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+    Notification.create(user: @challenge.user, notes: @bet)
   end
 end

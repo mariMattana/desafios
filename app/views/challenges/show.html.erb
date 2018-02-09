@@ -28,7 +28,7 @@
         <p>Início: <%= @challenge.start_date.strftime("%d/%m/%y") %> </p>
       </div>
       <div class="card-info">
-        <p>R$ <%= @challenge.value %>,00</p>
+        <p><%= humanized_money_with_symbol(@challenge.value) %></p>
       </div>
     </div>
 
