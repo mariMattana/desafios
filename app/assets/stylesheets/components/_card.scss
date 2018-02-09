@@ -37,10 +37,14 @@
 
 .card-progress-desc {
   position: absolute;
-  top: 100px;
+  overflow-y: auto;
+  height: 150px;
+  top: 60px;
   padding: 0;
   margin: 0;
   left: 30%;
+  width: 33%;
+  word-break: break-all;
 }
 
 .card-progress-date {
