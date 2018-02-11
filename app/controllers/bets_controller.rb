@@ -21,7 +21,7 @@ class BetsController < ApplicationController
     @bet.accepted = 1
     authorize @bet
     if @bet.save
-      # inviteUserToBet
+      inviteUserToBet
     else
       render :new
     end
@@ -56,5 +56,7 @@ class BetsController < ApplicationController
 
   def inviteUserToBet
     UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+    Notification.create(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
+    # add message
   end
 end

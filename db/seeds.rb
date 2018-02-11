@@ -22,12 +22,12 @@ end
 
 puts "Creating Challenges ..."
 challenges = [
-  {title: "Emagrecer 3 Kgs", description: "Galera!!! Vou emagrecer 15 kgs em 3 meses.\nQuem duvida?", start_date: "04/02/2018", end_date: "04/05/2018", value: "250", user_id: 4},
-  {title: "Parar de Fumar", description: "Nunca mais vou fumar.\nQuem me ver fumando ganha R$100,00", start_date: "04/02/2018", end_date: "04/09/2018", value: "1000", user_id: 5},
+  {title: "Emagrecer 3 Kgs", description: "Galera!!! Vou emagrecer 15 kgs em 3 meses.\nQuem duvida?", start_date: "04/02/2018", end_date: "04/05/2018", value: "250,50", user_id: 4},
+  {title: "Parar de Fumar", description: "Nunca mais vou fumar.\nQuem me ver fumando ganha R$100,00", start_date: "04/02/2018", end_date: "04/09/2018", value: "1000,00", user_id: 5},
   {title: "Todo dia post novo no Instagram", description: "Estou criando meu instagram para impulsionar a minha carreira de músico. Todo dia vou fazer um post novo.", start_date: "01/01/2018", end_date: "10/05/2018", value: "2000", user_id: 7},
   {title: "Seguir Dieta", description: "Vou seguir a minha nova dieta.", start_date: "03/02/2018", end_date: "09/05/2018", value: "70", user_id: 8},
-  {title: "Fazer duas trilhas por mês", description: "Vou fazer duas trilhas por mês esse ano", start_date: "01/01/2018", end_date: "31/12/2018", value: "350", user_id: 6},
-  {title: "Juntar dinheiro para comprar meu primeiro carro", description: "Vou juntar dinheiro esse ano para dar entrada no meu primeiro carro", start_date: "01/01/2018", end_date: "31/12/2018", value: "350", user_id: 5}
+  {title: "Fazer duas trilhas por mês", description: "Vou fazer duas trilhas por mês esse ano", start_date: "01/01/2018", end_date: "31/12/2018", value: "350,00", user_id: 6},
+  {title: "Juntar dinheiro para comprar meu primeiro carro", description: "Vou juntar dinheiro esse ano para dar entrada no meu primeiro carro", start_date: "01/01/2018", end_date: "31/12/2018", value: "350,30", user_id: 5}
 ]
 challenges.each do |challenge|
  new_challenge = Challenge.create!(title: challenge[:title], description: challenge[:description], start_date: challenge[:start_date], end_date: challenge[:end_date], value: challenge[:value], user_id: challenge[:user_id])
@@ -36,20 +36,20 @@ end
 
 puts "Creating Bets ..."
 bets = [
-  {value: 50, user_id: 8, challenge_id: 1},
-  {value: 120, user_id: 6, challenge_id: 1},
-  {value: 180, user_id: 8, challenge_id: 2},
-  {value: 220, user_id: 7, challenge_id: 2},
-  {value: 70, user_id: 5, challenge_id: 3},
-  {value: 350, user_id: 4, challenge_id: 3},
-  {value: 180, user_id: 7, challenge_id: 3},
-  {value: 20, user_id: 5, challenge_id: 4},
-  {value: 30, user_id: 4, challenge_id: 4},
-  {value: 100, user_id: 5, challenge_id: 5},
-  {value: 30, user_id: 4, challenge_id: 5},
-  {value: 40, user_id: 7, challenge_id: 5},
-  {value: 70, user_id: 6, challenge_id: 6},
-  {value: 30, user_id: 7, challenge_id: 6}
+  {value: 50, user_id: 8, challenge_id: 1, accepted: 2},
+  {value: 120, user_id: 6, challenge_id: 1, accepted: 3},
+  {value: 180, user_id: 8, challenge_id: 2, accepted: 2},
+  {value: 220, user_id: 7, challenge_id: 2, accepted: 3},
+  {value: 70, user_id: 5, challenge_id: 3, accepted: 2},
+  {value: 350, user_id: 4, challenge_id: 3, accepted: 1},
+  {value: 180, user_id: 7, challenge_id: 3, accepted: 3},
+  {value: 20, user_id: 5, challenge_id: 4, accepted: 2},
+  {value: 30, user_id: 4, challenge_id: 4, accepted: 2},
+  {value: 100, user_id: 5, challenge_id: 5, accepted: 3},
+  {value: 30, user_id: 4, challenge_id: 5, accepted: 3},
+  {value: 40, user_id: 7, challenge_id: 5, accepted: 3},
+  {value: 70, user_id: 6, challenge_id: 6, accepted: 2},
+  {value: 30, user_id: 7, challenge_id: 6, accepted: 1}
 ]
 bets.each do |bet|
  new_bet = Bet.create!(value: bet[:value], user_id: bet[:user_id], challenge_id: bet[:challenge_id])

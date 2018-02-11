@@ -9,10 +9,13 @@ Rails.application.routes.draw do
     resources :progresses, :path => "progressos"
   end
 
-  #get "api/v1/users", to: "users#index", as: :users
+  resources :notifications, only: [:index, :update]
+
+  # post "api/v1/notifications/:id", to: "notifications#mark_as_read", as: :mark_as_read
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      resources :notifications, only: [:index, :update]
       resources :users, only: [:index]
       resources :challenges, only: [ :index, :show, :update, :create, :destroy ] do
         resources :bets, only: [ :index, :show, :update, :create, :destroy ]

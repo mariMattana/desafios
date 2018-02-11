@@ -4,4 +4,6 @@ class Challenge < ApplicationRecord
   has_many :bets
   accepts_nested_attributes_for :progresses
 
+  monetize :value_cents
+
 end

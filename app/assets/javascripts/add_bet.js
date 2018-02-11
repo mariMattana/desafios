@@ -1,9 +1,13 @@
 let modal = document.getElementById('add-bet-modal');
 
-let invite = document.getElementById("invite-user");
-invite.addEventListener("click", (event) => {
+// let invite = document.getElementById("invite-user");
+// invite.addEventListener("click", (event) => {
+//   modal.style.display = "block";
+// });
+
+function displaySearchUserModal(){
   modal.style.display = "block";
-});
+}
 
 var div = document.getElementById("search-users");
 var users = div.getElementsByClassName("search-user");
@@ -90,7 +94,9 @@ let token = document.getElementById("authenticity_token").innerHTML;
 let inviteUserToBet = (id) => {
   let challengeId = window.location.href;
   challengeId = challengeId.slice(-1);
-  console.log(challengeId);
+  if (challengeId == "#") {
+    challengeId = window.location.href.slice(-2).charAt(0);
+  }
   fetch(`http://localhost:3000/api/v1/challenges/${challengeId}/bets`, {
       method: 'POST',
       body: JSON.stringify({ bet: {user_id: id } }),
@@ -110,12 +116,14 @@ let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
   let query = document.getElementById("search-bar").value;
-  fetch(`http://localhost:3000/api/v1/users?query=${query}`, {
-    method: 'GET'
-  })
-  .then(data => data.json())
-  .catch(error => console.error('Error:', error))
-  .then(response => updateUsersInSearch(response))
+  if (query != "") {
+    fetch(`http://localhost:3000/api/v1/users?query=${query}`, {
+      method: 'GET'
+    })
+    .then(data => data.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => updateUsersInSearch(response))
+  }
 });
 
 function updateUsersInSearch(users) {
