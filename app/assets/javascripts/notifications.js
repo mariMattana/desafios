@@ -40,8 +40,12 @@ function updateNotifications(json) {
 
 };
 
+let domain = document.domain;
+if (domain === "localhost") {
+  domain = "localhost:3000"
+}
 function getNotifications(){
-  fetch(`http://localhost:3000/api/v1/notifications`, {
+  fetch(`http://${domain}/api/v1/notifications`, {
     method: 'GET'
   })
   .then(data => data.json())
@@ -53,7 +57,7 @@ setInterval(getNotifications, 1000);
 getNotifications();
 
 let markNotificationAsRead = (notification_id) => {
-  fetch(`http://localhost:3000/api/v1/notifications/${notification_id}`, {
+  fetch(`http://${domain}/api/v1/notifications/${notification_id}`, {
       method: 'PATCH',
       credentials: 'same-origin',
       headers: {
