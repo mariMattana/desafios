@@ -1,9 +1,13 @@
 let modal = document.getElementById('add-bet-modal');
 
-let invite = document.getElementById("invite-user");
-invite.addEventListener("click", (event) => {
+// let invite = document.getElementById("invite-user");
+// invite.addEventListener("click", (event) => {
+//   modal.style.display = "block";
+// });
+
+function displaySearchUserModal(){
   modal.style.display = "block";
-});
+}
 
 var div = document.getElementById("search-users");
 var users = div.getElementsByClassName("search-user");
@@ -93,7 +97,6 @@ let inviteUserToBet = (id) => {
   if (challengeId == "#") {
     challengeId = window.location.href.slice(-2).charAt(0);
   }
-  console.log(challengeId);
   fetch(`http://localhost:3000/api/v1/challenges/${challengeId}/bets`, {
       method: 'POST',
       body: JSON.stringify({ bet: {user_id: id } }),

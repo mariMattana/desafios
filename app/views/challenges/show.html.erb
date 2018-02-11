@@ -3,7 +3,7 @@
 <div class="container">
     <div class="card card-challenge-show">
       <% if policy(@challenge).invite? %>
-        <div class="card-invite">
+        <div class="card-invite" onclick="displaySearchUserModal()">
           <%= icon('user-plus', id: 'invite-user') %>
         </div>
       <% end %>

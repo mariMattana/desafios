@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :update]
 
-  #get "api/v1/users", to: "users#index", as: :users
+  # post "api/v1/notifications/:id", to: "notifications#mark_as_read", as: :mark_as_read
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

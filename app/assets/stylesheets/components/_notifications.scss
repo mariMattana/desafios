@@ -1,7 +1,4 @@
 /* Dropdown menu */
-#notifications-btn {
-
-}
 #unread-count {
   background-color: $strong-red;
   color: $light-gray;
@@ -17,13 +14,14 @@
 }
 #notifications {
   margin-top: 20px;
+  min-height: 100px;
 }
 .notification {
+  cursor: pointer;
   font-size: 15px;
   border-top: 1px solid #E6E6E6;
 }
 .first-notification {
-  font-size: 15px;
   border-top: none;
 }
 .notification {

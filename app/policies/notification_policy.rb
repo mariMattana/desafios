@@ -6,6 +6,7 @@ class NotificationPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.user
+    # user == record.user
+    true
   end
 end
