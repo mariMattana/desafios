@@ -3,7 +3,7 @@
 <div class="container">
     <div class="card card-challenge-show">
       <% if policy(@challenge).invite? %>
-        <div class="card-invite">
+        <div class="card-invite" onclick="displaySearchUserModal()">
           <%= icon('user-plus', id: 'invite-user') %>
         </div>
       <% end %>
@@ -28,7 +28,7 @@
         <p>Início: <%= @challenge.start_date.strftime("%d/%m/%y") %> </p>
       </div>
       <div class="card-info">
-        <p>R$ <%= @challenge.value %>,00</p>
+        <p><%= humanized_money_with_symbol(@challenge.value) %></p>
       </div>
     </div>
 
@@ -61,19 +61,7 @@
   <div id="bets">
     <h3>Bets</h3>
     <% @bets.each do |bet| %>
-
-
-
-        <% if bet.accepted == "accepted" %>
-          <div class="card card-bet accepted">
-        <% elsif bet.accepted == "declined" %>
-          <div class="card card-bet declined">
-        <% elsif bet.accepted == "waiting_confirmation" %>
-          <div class="card card-bet waiting_confirmation">
-        <% end %>
-
         <div class="card card-bet <%= bet.accepted %>">
-
           <div class="bet-img">
             <%= cl_image_tag(bet.user.photo, width: 60, height: 60, crop: :fill) %>
           </div>

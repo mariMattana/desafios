@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :challenges
   has_many :bets
   has_many :progresses
+  has_many :notifications, foreign_key: :recipient_id
 
   mount_uploader :photo, PhotoUploader
 

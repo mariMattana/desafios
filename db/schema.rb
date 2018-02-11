@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206140621) do
+ActiveRecord::Schema.define(version: 20180209195927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bets", force: :cascade do |t|
     t.integer "value"
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.integer "accepted", default: 1
     t.bigint "user_id"
     t.bigint "challenge_id"
@@ -32,12 +32,25 @@ ActiveRecord::Schema.define(version: 20180206140621) do
     t.text "description"
     t.date "start_date"
     t.date "end_date"
-    t.integer "value"
     t.boolean "completed", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "value_cents", default: 0, null: false
+    t.string "value_currency", default: "BRL", null: false
     t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.text "message"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "progresses", force: :cascade do |t|
