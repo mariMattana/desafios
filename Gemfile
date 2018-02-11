@@ -23,6 +23,7 @@ gem "letter_opener", group: :development
 gem "simple_token_authentication"
 gem 'pg_search'
 gem 'money-rails'
+gem 'jquery-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
