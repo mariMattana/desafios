@@ -87,7 +87,7 @@
         <div class="search-bar">
           <%= text_field_tag :query, params[:query], class: "form-control", id: "search-bar", placeholder: "Ache um Amigo" %>
         </div>
-        <div class="search-btn">
+        <div class="search-btn" onclick="searchUsers()">
           <%= submit_tag "Pesquise", id: "search-btn" %>
         </div>
         <ul id="search-users">
@@ -118,27 +118,31 @@
 
   function displaySearchUserModal(){
     modal.style.display = "block";
+    createEventActive();
   }
 
-  var users = document.getElementsByClassName("search-user");
-
   function removeAllActives(){
-    for (var i = 0; i < users.length; i++) {
+    let users = document.getElementsByClassName("search-user");
+    for (let i = 0; i < users.length; i++) {
       if (users[i].className == "search-user active"){
         users[i].className = "search-user"
       }
     }
   }
 
-  for (var i = 0; i < users.length; i++) {
-    users[i].addEventListener("click", function() {
-      removeAllActives();
-      this.className += " active";
-    });
+  function createEventActive(){
+    let users = document.getElementsByClassName("search-user");
+    for (let i = 0; i < users.length; i++) {
+      users[i].addEventListener("click", function() {
+        removeAllActives();
+        this.className += " active";
+      });
+    }
   }
 
   function getIdFromActive() {
-    for (var i = 0; i < users.length; i++) {
+    let users = document.getElementsByClassName("search-user");
+    for (let i = 0; i < users.length; i++) {
       if (users[i].className == "search-user active"){
         let id = users[i].getAttribute("id").toString().split("user-")[1];
         return id;
@@ -149,12 +153,14 @@
   let close = document.getElementById("modal-close");
   close.addEventListener("click", (event) => {
     removeAllActives();
+    cleanSearch();
     modal.style.display = "none";
   });
 
   let cancel = document.getElementById("btn-cancel");
   cancel.addEventListener("click", (event) => {
     removeAllActives();
+    cleanSearch();
     modal.style.display = "none";
   });
 
@@ -162,6 +168,7 @@
   confirm.addEventListener("click", (event) => {
     let id = getIdFromActive();
     removeAllActives();
+    cleanSearch();
     inviteUserToBet(id);
     modal.style.display = "none";
   });
@@ -222,8 +229,7 @@
       .then(response => addBetToHtml(response))
   }
 
-  let searchBtn = document.getElementById("search-btn");
-  searchBtn.addEventListener("click", (event) => {
+  function searchUsers() {
     event.preventDefault();
     let query = document.getElementById("search-bar").value;
     if (query != "") {
@@ -233,8 +239,13 @@
       .then(data => data.json())
       .catch(error => console.error('Error:', error))
       .then(response => updateUsersInSearch(response))
+    }else{
+      let searchUsers = document.getElementById("search-users");
+      while (searchUsers.firstChild) {
+          searchUsers.removeChild(searchUsers.firstChild);
+      }
     }
-  });
+  }
 
   function updateUsersInSearch(users) {
     let searchUsers = document.getElementById("search-users");
@@ -259,6 +270,11 @@
       img.setAttribute("src", users[i].photo.url);
       p.innerHTML = users[i].first_name + " " + users[i].last_name;
     };
-
+    createEventActive();
   };
+
+  function cleanSearch() {
+    document.getElementById("search-bar").value = "";
+    searchUsers();
+  }
 </script>
