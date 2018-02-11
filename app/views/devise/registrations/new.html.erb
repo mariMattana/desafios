@@ -1,26 +1,56 @@
 <div class="container">
-  <h2>Sign up</h2>
+  <div class="form-style-3">
+    <fieldset>
+      <h2 class="text-center">Cadastre-se</h2>
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4" >
+          <h3>Ja sou cadastrado</h3>
+          <div>
+            <a class="btn btn-block btn-social btn-facebook margin-b-10">
+              <span class="fa fa-facebook"></span>Facebook
+            </a>
+            <a class="btn btn-block btn-social btn-google margin-b-40">
+              <span class="fa fa-google"></span> Gmail
+            </a>
+          </div>
+            <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :email, required: false, autofocus: true %>
+                <%= f.input :password, required: false %>
+                <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+              </div>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+              <div class="form-actions">
+                <%= f.button :submit, "Entrar" %>
+              </div>
+            <% end %>
+            <%= render "devise/shared/forgot_password" %>
+          </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6" style="border-left:1px solid #ccc;">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :first_name, required: true, autofocus: true %>
-      <%= f.input :last_name, required: true %>
-      <%= f.input :nickname, required: true %>
-      <%= f.input :cpf, required: true %>
-      <%= f.input :birthday, required: true %>
-      <%= f.input :photo, required: true %>
-      <%= f.input :photo_cache, as: :hidden %>
-      <%= f.input :email, required: true %>
-      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      <%= f.input :password_confirmation, required: true %>
-    </div>
+            <div class="form-inputs input-field">
+              <%= f.input :first_name, required: true, autofocus: true %>
+              <%= f.input :last_name, required: true %>
+              <%= f.input :nickname, required: true %>
+              <%= f.input :cpf, required: true %>
+              <%= f.input :birthday, required: true %>
+              <%= f.input :photo, required: true %>
+              <%= f.input :photo_cache, as: :hidden %>
+              <%= f.input :email, required: true %>
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <%= f.input :password_confirmation, required: true %>
+            </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+            <div class="form-actions">
+              <%= f.button :submit, "Cadastrar" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
 </div>
