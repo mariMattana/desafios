@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :progresses, :path => "progressos"
   end
 
+  resources :notifications, only: [:index, :update]
+
   #get "api/v1/users", to: "users#index", as: :users
 
   namespace :api, defaults: { format: :json } do

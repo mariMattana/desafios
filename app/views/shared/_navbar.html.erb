@@ -12,7 +12,12 @@
       <!-- Links when logged in -->
       <%= link_to "Criar Desafio", new_challenge_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mensagens", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to icon('bell'), "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <div class="dropdown" id="notifications-dropdow">
+        <%= icon('bell', class: "navbar-wagon-item navbar-wagon-link dropdown-toggle", id: "notifications-btn", "data-toggle" => "dropdown") %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu" id="notifications">
+
+          </ul>
+      </div>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

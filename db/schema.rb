@@ -42,14 +42,15 @@ ActiveRecord::Schema.define(version: 20180209195927) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "notes_id"
-    t.string "notes_type"
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
     t.text "message"
-    t.boolean "read"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "progresses", force: :cascade do |t|
@@ -93,7 +94,6 @@ ActiveRecord::Schema.define(version: 20180209195927) do
   add_foreign_key "bets", "challenges"
   add_foreign_key "bets", "users"
   add_foreign_key "challenges", "users"
-  add_foreign_key "notifications", "users"
   add_foreign_key "progresses", "challenges"
   add_foreign_key "progresses", "users"
 end

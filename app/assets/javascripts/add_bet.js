@@ -90,6 +90,9 @@ let token = document.getElementById("authenticity_token").innerHTML;
 let inviteUserToBet = (id) => {
   let challengeId = window.location.href;
   challengeId = challengeId.slice(-1);
+  if (challengeId == "#") {
+    challengeId = window.location.href.slice(-2).charAt(0);
+  }
   console.log(challengeId);
   fetch(`http://localhost:3000/api/v1/challenges/${challengeId}/bets`, {
       method: 'POST',
@@ -110,12 +113,14 @@ let searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", (event) => {
   event.preventDefault();
   let query = document.getElementById("search-bar").value;
-  fetch(`http://localhost:3000/api/v1/users?query=${query}`, {
-    method: 'GET'
-  })
-  .then(data => data.json())
-  .catch(error => console.error('Error:', error))
-  .then(response => updateUsersInSearch(response))
+  if (query != "") {
+    fetch(`http://localhost:3000/api/v1/users?query=${query}`, {
+      method: 'GET'
+    })
+    .then(data => data.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => updateUsersInSearch(response))
+  }
 });
 
 function updateUsersInSearch(users) {
