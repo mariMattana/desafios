@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :progresses, :path => "progressos"
   end
 
+  # post "desafios/:challenge_id/convites/:id", to: "bets#confirm_bet", as: :confirm_bet
+
   resources :notifications, only: [:index, :update]
 
   # post "api/v1/notifications/:id", to: "notifications#mark_as_read", as: :mark_as_read

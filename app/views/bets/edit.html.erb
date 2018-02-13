@@ -1,2 +1,146 @@
-<h1>Edit Bet</h1>
-<%= render "form" %>
+<div class="container">
+  <div class="card card-bet-edit">
+    <div class="bet-img-edit">
+      <%= cl_image_tag(@bet.user.photo, width: 250, height: 250, crop: :fill) %>
+    </div>
+    <h3><%= @bet.user.first_name + " " + @bet.user.last_name %></h3>
+    <% if @bet.accepted == "accepted" %>
+      <p><%= humanized_money_with_symbol(@bet.value) %></p>
+      <% if @bet.challenge.completed && @bet.completed.nil? %>
+        <p>Você concorda que <%= @bet.challenge.user.first_name + " " + @bet.challenge.user.last_name %> alcaçou seu objetivo?</p>
+        <div class="btn-opt-bet">
+          <%= link_to icon("check", id: "challenge-completed"), challenge_path(@bet.challenge) %>
+          <%= link_to icon("times", id: "challenge-incompleted"), challenge_path(@bet.challenge) %>
+        </div>
+      <% elsif @bet.challenge.completed %>
+        <%= @bet.completed %>
+      <% end %>
+    <% elsif @bet.accepted == "waiting_confirmation" %>
+      <div class="slidecontainer">
+        <p id="min-value">Min: R$20,00</p>
+        <input type="range" min="20" max="250" value="125" class="slider" id="bet-range">
+        <p id="max-value">Min: R$250,00</p>
+        <p id="output"></p>
+      </div>
+      <div class="btn-opt-bet">
+        <%= link_to icon("check", id: "accept"), challenge_path(@bet.challenge) %>
+        <%= link_to icon("times", id: "decline"), challenge_path(@bet.challenge) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+<script>
+  var slider = document.getElementById("bet-range");
+  var output = document.getElementById("output");
+  if (slider !== null) {
+    console.log("slider error");
+    output.innerHTML = "Valor: R$" + slider.value + ",00";
+
+    slider.oninput = function() {
+      output.innerHTML = "Valor: R$" + this.value + ",00";
+    }
+  }
+
+  domain = document.domain;
+  if (domain === "localhost") {
+    domain = "localhost:3000"
+  }
+
+  let accept = document.getElementById("accept");
+  if (accept !== null) {
+    accept.addEventListener("click", (event) => {
+      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-18).charAt(0);
+      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({bet: {accepted: "accepted", value: slider.value}}),
+        credentials: 'same-origin',
+        headers: {
+          'X-User-Email': 'daniel.phr@gmail.com',
+          'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(data => data.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log(response))
+    });
+  }
+
+  let decline = document.getElementById("decline");
+  if (decline !== null) {
+    decline.addEventListener("click", (event) => {
+      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-18).charAt(0);
+      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({bet: {accepted: "declined"}}),
+        credentials: 'same-origin',
+        headers: {
+          'X-User-Email': 'daniel.phr@gmail.com',
+          'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(data => data.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log(response))
+    });
+  }
+
+  function afterEndChallenge(response) {
+    let endChallenge = document.getElementById("end-challenge");
+    endChallenge.style.display = "none";
+    let timeLeftCompletion = document.getElementById("time-left-completion");
+    if (response === "Desafio Alcançado") {
+      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-check'></i> " + response;
+    } else {
+      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-times' style='color: red;'></i> " + response;
+    }
+  }
+
+  let completed = document.getElementById("challenge-completed");
+  if (completed !== null) {
+    completed.addEventListener("click", (event) => {
+      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-18).charAt(0);
+      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ bet: {completed: true } }),
+          credentials: 'same-origin',
+          headers: {
+            'X-User-Email': 'daniel.phr@gmail.com',
+            'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(data => data.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log(response))
+    });
+  }
+
+  let incompleted = document.getElementById("challenge-incompleted");
+  if (incompleted !== null) {
+    incompleted.addEventListener("click", (event) => {
+      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-18).charAt(0);
+      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+          method: 'PATCH',
+          body: JSON.stringify({ bet: {completed: false } }),
+          credentials: 'same-origin',
+          headers: {
+            'X-User-Email': 'daniel.phr@gmail.com',
+            'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(data => data.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log(response))
+    });
+  }
+</script>

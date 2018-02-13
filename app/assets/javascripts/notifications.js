@@ -27,6 +27,7 @@ function updateNotifications(json) {
     li.id = "notification-" + i.toString();
     a.innerHTML = json[i].actor.first_name + " " + json[i].actor.last_name + " " + json[i].action + " ";
     a.innerHTML += json[i].recipient.first_name + " " + json[i].recipient.last_name;
+    a.setAttribute("href", json[i].url);
   };
   let notificationsDropdow = document.getElementById("notifications-dropdow");
   let span = document.createElement("span");
@@ -36,7 +37,6 @@ function updateNotifications(json) {
   if (unreads === 0) {
     span.classList.add("zero");
   }
-  // href a
 
 };
 
@@ -52,7 +52,7 @@ function getNotifications(){
   .catch(error => console.error('Error:', error))
   .then(response => updateNotifications(response))
 }
-setInterval(getNotifications, 1000);
+setInterval(getNotifications, 10000);
 
 getNotifications();
 

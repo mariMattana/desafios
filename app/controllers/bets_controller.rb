@@ -18,7 +18,7 @@ class BetsController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.new(bet_params)
     @bet.challenge_id = @challenge.id
-    @bet.accepted = 1
+    @bet.accepted = "waiting_confirmation"
     authorize @bet
     if @bet.save
       inviteUserToBet
@@ -30,6 +30,7 @@ class BetsController < ApplicationController
   def edit
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.find(params[:id])
+    @max_value = calc_max_value
     authorize @bet
   end
 
@@ -51,12 +52,21 @@ class BetsController < ApplicationController
   private
 
   def bet_params
-    params.require(:bet).permit(:user_id)
+    params.require(:bet).permit(:user_id, :value, :accepted)
   end
 
   def inviteUserToBet
     UserMailer.invitation(@challenge.user, @bet.user).deliver_now
     Notification.create(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
     # add message
+  end
+
+  def calc_max_value
+    max_value = @challenge.value.to_i
+    bets = Bet.all
+    bets.each do |bet|
+    max_value -= bet.value.to_i if bet.accepted == "accepted"
+    max_value
+    end
   end
 end

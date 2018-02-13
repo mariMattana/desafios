@@ -1,6 +1,6 @@
 <div class="container">
   <div class="card-bet">
-    <h3>R$ <%= @bet.value %></h3>
+    <h3><%= humanized_money_with_symbol(@bet.value) %></h3>
     <h3><%= @bet.completed %></h3>
     <h3><%= @bet.accepted %></h3>
   </div>

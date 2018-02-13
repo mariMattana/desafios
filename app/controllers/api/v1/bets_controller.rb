@@ -1,5 +1,5 @@
 class Api::V1::BetsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+  acts_as_token_authentication_handler_for User, except: [ :index, :show, :update ]
   before_action :set_bet, only: [ :show, :update, :destroy ]
 
   def index
@@ -11,7 +11,12 @@ class Api::V1::BetsController < Api::V1::BaseController
 
   def update
     if @bet.update(bet_params)
-      render :show
+      if @bet.completed.nil?
+        reply_to_challenge_user
+      else
+        end_bet
+      end
+      render json: {}, status: 200
     else
       render_error
     end
@@ -21,7 +26,7 @@ class Api::V1::BetsController < Api::V1::BaseController
     @challenge = Challenge.find(params[:challenge_id])
     @bet = Bet.new(bet_params)
     @bet.challenge_id = @challenge.id
-    @bet.accepted = 1
+    @bet.accepted = "waiting_confirmation"
     authorize @bet
     if @bet.save
       inviteUserToBet
@@ -44,7 +49,7 @@ class Api::V1::BetsController < Api::V1::BaseController
   end
 
   def bet_params
-    params.require(:bet).permit(:value, :accepted, :user_id, :challenge_id)
+    params.require(:bet).permit(:value, :accepted, :user_id, :challenge_id, :completed)
   end
 
   def render_error
@@ -55,5 +60,23 @@ class Api::V1::BetsController < Api::V1::BaseController
   def inviteUserToBet
     UserMailer.invitation(@challenge.user, @bet.user).deliver_now
     Notification.create!(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
+  end
+
+  def reply_to_challenge_user
+    # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+    if @bet.accepted == "accepted"
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "aceitou a aposta", notifiable: @bet)
+    elsif @bet.accepted == "declined"
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "recusou a aposta", notifiable: @bet)
+    end
+  end
+
+  def end_bet
+    if @bet.completed
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "concordou", notifiable: @bet)
+    else
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "não concordou", notifiable: @bet)
+    end
+    # create payment
   end
 end

@@ -10,7 +10,8 @@ class BetPolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_owner?
+    # user_is_owner?
+    true
   end
 
   def destroy?

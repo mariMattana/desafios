@@ -1,4 +1,14 @@
 <%= content_for :title, "Desafio"%>
+<% if @challenge.completed.nil? && policy(@challenge).update? %>
+  <div id="end-challenge">
+    <button id="btn-end-challenge">Finalizar Desafio</button>
+    <div id="end-challenge-icons">
+      <%= icon("check", id: "win-challenge") %>
+      <%= icon("times", id: "loose-challenge") %>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
 <div class="container">
     <div class="card card-challenge-show">
@@ -18,10 +28,16 @@
         <p><%= @challenge.description %></p>
       </div>
       <div class="card-date">
-        <% if @challenge.completed %>
-          <%= icon("check-circle", class: "check-challenge-completion") %><span> Desafio Alcançado</span>
-        <% else %>
-          <h3>Faltam <span class="date-left"><%= (@challenge.end_date - Date.today).to_i %></span> dias</h3>
+        <% if @challenge.completed.nil? %>
+          <h3 id="time-left-completion">Faltam <span class="date-left"><%= (@challenge.end_date - Date.today).to_i %></span> dias</h3>
+        <% elsif @challenge.completed %>
+          <div class="challenge-complete">
+            <%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %>
+          </div>
+        <% elsif !@challenge.completed %>
+          <div class="challenge-incomplete">
+            <%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %>
+          </div>
         <% end %>
       </div>
       <div class="card-start-date">
@@ -67,7 +83,7 @@
           </div>
           <h3><%= bet.user.first_name + " " + bet.user.last_name %></h3>
           <% if bet.accepted == "accepted" %>
-            <p>R$<%= bet.value %></p>
+            <p><%= humanized_money_with_symbol(bet.value) %></p>
           <% end %>
         </div>
     <% end %>
@@ -184,27 +200,23 @@
   });
 
   function addBetToHtml(json) {
-      let divCard = document.createElement("div");
-      let divBetImg = document.createElement("div");
-      let img = document.createElement("img");
-      let h3 = document.createElement("h3");
-      bets.appendChild(divCard);
-      divCard.appendChild(divBetImg);
-      divBetImg.appendChild(img);
-      divCard.appendChild(h3);
-      divCard.classList.add("card");
-      divCard.classList.add("card-bet");
-      divCard.classList.add(json.accepted);
-      divBetImg.classList.add("bet-img");
-      img.setAttribute("width", "60");
-      img.setAttribute("height", "60");
-      img.setAttribute("src", json.user.photo.url);
-      h3.innerHTML = json.user.first_name + " " + json.user.last_name;
-      if (json.accepted) {
-        let p = document.createElement("p");
-        p.innerHTML = json.value;
-        divCard.appendChild(p);
-      }
+    console.log(json);
+    let divCard = document.createElement("div");
+    let divBetImg = document.createElement("div");
+    let img = document.createElement("img");
+    let h3 = document.createElement("h3");
+    bets.appendChild(divCard);
+    divCard.appendChild(divBetImg);
+    divBetImg.appendChild(img);
+    divCard.appendChild(h3);
+    divCard.classList.add("card");
+    divCard.classList.add("card-bet");
+    divCard.classList.add(json.accepted);
+    divBetImg.classList.add("bet-img");
+    img.setAttribute("width", "60");
+    img.setAttribute("height", "60");
+    img.setAttribute("src", json.user.photo.url);
+    h3.innerHTML = json.user.first_name + " " + json.user.last_name;
   }
 
   let token = document.getElementById("authenticity_token").innerHTML;
@@ -277,4 +289,63 @@
     document.getElementById("search-bar").value = "";
     searchUsers();
   }
+
+  let btnEndChallenge = document.getElementById("btn-end-challenge");
+  btnEndChallenge.addEventListener("click", (event) => {
+    let icons = document.getElementById("end-challenge-icons");
+    if (icons.style.display == "inline") {
+      icons.style.display = "none";
+    } else {
+      icons.style.display = "inline";
+    }
+  });
+
+  let win = document.getElementById("win-challenge");
+  win.addEventListener("click", (event) => {
+    let challengeId = window.location.href.slice(-1);
+    fetch(`http://${domain}/api/v1/challenges/${challengeId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ challenge: {completed: true } }),
+        credentials: 'same-origin',
+        headers: {
+          'X-User-Email': 'daniel.phr@gmail.com',
+          'X-User-Token': "eSWMGzTehFtHuizkCprp",
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(data => data.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => afterEndChallenge("Desafio Alcançado"))
+  });
+  let loose = document.getElementById("loose-challenge");
+  loose.addEventListener("click", (event) => {
+    let challengeId = window.location.href.slice(-1);
+    fetch(`http://${domain}/api/v1/challenges/${challengeId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({ challenge: {completed: false } }),
+        credentials: 'same-origin',
+        headers: {
+          'X-User-Email': 'daniel.phr@gmail.com',
+          'X-User-Token': "eSWMGzTehFtHuizkCprp",
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(data => data.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => afterEndChallenge("Desafio Não Alcançado"))
+  });
+
+  function afterEndChallenge(response) {
+    let endChallenge = document.getElementById("end-challenge");
+    endChallenge.style.display = "none";
+    let timeLeftCompletion = document.getElementById("time-left-completion");
+    if (response === "Desafio Alcançado") {
+      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-check'></i> " + response;
+    } else {
+      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-times' style='color: red;'></i> " + response;
+    }
+
+
+  }
+
 </script>
