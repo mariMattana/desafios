@@ -5,7 +5,7 @@
     </div>
     <h3><%= @bet.user.first_name + " " + @bet.user.last_name %></h3>
     <% if @bet.accepted == "accepted" %>
-      <p>R$<%= humanized_money_with_symbol(@bet.value) %></p>
+      <p><%= humanized_money_with_symbol(@bet.value) %></p>
       <% if @bet.challenge.completed && @bet.completed.nil? %>
         <p>Você concorda que <%= @bet.challenge.user.first_name + " " + @bet.challenge.user.last_name %> alcaçou seu objetivo?</p>
         <div class="btn-opt-bet">
