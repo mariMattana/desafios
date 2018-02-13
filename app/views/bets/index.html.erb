@@ -1,5 +1,5 @@
 <% @bets.each do |bet| %>
-  <h3><%= bet.value %></h3>
+  <h3><%= humanized_money_with_symbol(bet.value) %></h3>
   <h3><%= bet.completed %></h3>
   <h3><%= bet.accepted %></h3>
   <hr>

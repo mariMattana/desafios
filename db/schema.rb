@@ -10,19 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209195927) do
+ActiveRecord::Schema.define(version: 20180213035940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "banks", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "bets", force: :cascade do |t|
-    t.integer "value"
-    t.boolean "completed", default: false
+    t.boolean "completed"
     t.integer "accepted", default: 1
     t.bigint "user_id"
     t.bigint "challenge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "value_cents", default: 0, null: false
+    t.string "value_currency", default: "BRL", null: false
     t.index ["challenge_id"], name: "index_bets_on_challenge_id"
     t.index ["user_id"], name: "index_bets_on_user_id"
   end
@@ -32,7 +40,7 @@ ActiveRecord::Schema.define(version: 20180209195927) do
     t.text "description"
     t.date "start_date"
     t.date "end_date"
-    t.boolean "completed", default: false
+    t.boolean "completed"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -1,10 +1,5 @@
 // let modal = document.getElementById('add-bet-modal');
 
-// // let invite = document.getElementById("invite-user");
-// // invite.addEventListener("click", (event) => {
-// //   modal.style.display = "block";
-// // });
-
 // function displaySearchUserModal(){
 //   modal.style.display = "block";
 // }

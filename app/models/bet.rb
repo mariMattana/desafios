@@ -3,5 +3,7 @@ class Bet < ApplicationRecord
   belongs_to :challenge
   has_many :notifications, as: :notifiable
 
-  enum accepted: [ :not_invited, :waiting_confirmation, :accepted, :declined ]
+  monetize :value_cents
+
+  enum accepted: [ :waiting_confirmation, :accepted, :declined ]
 end
