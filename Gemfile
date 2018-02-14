@@ -24,7 +24,7 @@ gem "simple_token_authentication"
 gem 'pg_search'
 gem 'money-rails'
 gem 'jquery-rails'
-
+gem 'rack-cors', :require => 'rack/cors'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

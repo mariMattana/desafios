@@ -61,8 +61,8 @@ let markNotificationAsRead = (notification_id) => {
       method: 'PATCH',
       credentials: 'same-origin',
       headers: {
-        'X-User-Email': 'daniel.phr@gmail.com',
-        'X-User-Token': "eSWMGzTehFtHuizkCprp",
+       // 'X-User-Email': 'daniel.phr@gmail.com',
+       // 'X-User-Token': "eSWMGzTehFtHuizkCprp",
         'Content-Type': 'application/json'
       }
     })
