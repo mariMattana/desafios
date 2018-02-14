@@ -1,9 +1,15 @@
 body {
   background-color: white;
 }
+.landing-page{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 .banner {
   background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(40,40,40,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
   width: 100%;
+  background-position: center center;
   color: $light-red;
   text-align: center;
   height: calc(100vh - 70px);
@@ -15,8 +21,8 @@ body {
   margin-bottom: 0;
 }
 .banner-content {
-  margin-top: 0;
-  margin-bottom: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 .banner h1 {
   font-size: 50px;
@@ -29,6 +35,18 @@ body {
   color: rgb(255, 255, 255);
   opacity: 0.6;
   margin-bottom: 30px;
+}
+@media screen and (max-width: 568px) {
+  .banner-content h1 {
+    font-size:30px;
+  };
+  .banner-content p {
+  font-size: 20px;
+  }
+}
+.buttons-landing {
+  margin-left: 10px;
+  margin-bottom: 15px;
 }
 .how-works {
   background-color: $light-gray;
@@ -62,7 +80,6 @@ body {
   left: 85px;
   z-index: 1;
 }
-
 
 .experiences {
   margin: 5%;
