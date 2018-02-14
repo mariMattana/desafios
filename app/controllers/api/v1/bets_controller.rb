@@ -58,7 +58,7 @@ class Api::V1::BetsController < Api::V1::BaseController
   end
 
   def inviteUserToBet
-    UserMailer.invitation(@challenge.user, @bet.user).deliver_now
+    # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
     Notification.create!(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
   end
 
