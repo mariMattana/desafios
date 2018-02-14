@@ -27,6 +27,7 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     @challenge.user = current_user
+    @challenge.completed = nil
     authorize @challenge
     if @challenge.save
       redirect_to challenge_path(@challenge)
