@@ -52,7 +52,7 @@
   let accept = document.getElementById("accept");
   if (accept !== null) {
     accept.addEventListener("click", (event) => {
-      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let betId = window.location.href.slice(-7).match(/[0-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
       fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
@@ -73,7 +73,7 @@
   let decline = document.getElementById("decline");
   if (decline !== null) {
     decline.addEventListener("click", (event) => {
-      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let betId = window.location.href.slice(-7).match(/[0-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
       fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
@@ -105,7 +105,7 @@
   let completed = document.getElementById("challenge-completed");
   if (completed !== null) {
     completed.addEventListener("click", (event) => {
-      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let betId = window.location.href.slice(-7).match(/[0-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
       fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',
@@ -126,7 +126,7 @@
   let incompleted = document.getElementById("challenge-incompleted");
   if (incompleted !== null) {
     incompleted.addEventListener("click", (event) => {
-      let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
+      let betId = window.location.href.slice(-7).match(/[0-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
       fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',

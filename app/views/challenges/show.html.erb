@@ -284,9 +284,9 @@
 
   let token = document.getElementById("authenticity_token").innerHTML;
   let inviteUserToBet = (id, value) => {
-    let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+    let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
     if (challengeId == "#") {
-      challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
     }
     fetch(`${domain}/api/v1/challenges/${challengeId}/bets`, {
         method: 'POST',
@@ -367,7 +367,7 @@
   let win = document.getElementById("win-challenge");
   if (win !== null) {
     win.addEventListener("click", (event) => {
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}`, {
           method: 'PATCH',
           body: JSON.stringify({ challenge: {completed: true } }),
@@ -387,7 +387,7 @@
   let loose = document.getElementById("loose-challenge");
   if (loose !== null) {
     loose.addEventListener("click", (event) => {
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}`, {
           method: 'PATCH',
           body: JSON.stringify({ challenge: {completed: false } }),
@@ -436,8 +436,8 @@
   let accept = document.getElementById("accept-bet");
   if (accept !== null) {
     accept.addEventListener("click", (event) => {
-      let betId = accept.parentNode.parentNode.id.slice(-3).match(/[1-9]+/)[0];
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let betId = accept.parentNode.parentNode.id.slice(-5).match(/[0-9]+/)[0];
+      let challengeId = window.location.href.slice(-5).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
         body: JSON.stringify({bet: {accepted: "accepted", value: slider.value}}),
@@ -462,8 +462,8 @@
   let decline = document.getElementById("decline-bet");
   if (decline !== null) {
     decline.addEventListener("click", (event) => {
-      let betId = decline.parentNode.parentNode.id.slice(-3).match(/[1-9]+/)[0];
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let betId = decline.parentNode.parentNode.id.slice(-3).match(/[0-9]+/)[0];
+      let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
         body: JSON.stringify({bet: {accepted: "declined"}}),
@@ -488,8 +488,8 @@
   let completed = document.getElementById("challenge-completed");
   if (completed !== null) {
     completed.addEventListener("click", (event) => {
-      let betId = completed.parentNode.parentNode.id.slice(-3).match(/[1-9]+/)[0];
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let betId = completed.parentNode.parentNode.id.slice(-3).match(/[0-9]+/)[0];
+      let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',
           body: JSON.stringify({ bet: {completed: true } }),
@@ -516,8 +516,8 @@
   let incomplete = document.getElementById("challenge-incomplete");
   if (incomplete !== null) {
     incomplete.addEventListener("click", (event) => {
-      let betId = incomplete.parentNode.parentNode.id.slice(-3).match(/[1-9]+/)[0];
-      let challengeId = window.location.href.slice(-3).match(/[1-9]+/)[0];
+      let betId = incomplete.parentNode.parentNode.id.slice(-3).match(/[0-9]+/)[0];
+      let challengeId = window.location.href.slice(-3).match(/[0-9]+/)[0];
       fetch(`${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',
           body: JSON.stringify({ bet: {completed: false } }),
