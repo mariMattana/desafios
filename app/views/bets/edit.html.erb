@@ -54,7 +54,7 @@
     accept.addEventListener("click", (event) => {
       let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
-      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+      fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
         body: JSON.stringify({bet: {accepted: "accepted", value: slider.value}}),
         credentials: 'same-origin',
@@ -75,7 +75,7 @@
     decline.addEventListener("click", (event) => {
       let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
-      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+      fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
         method: 'PATCH',
         body: JSON.stringify({bet: {accepted: "declined"}}),
         credentials: 'same-origin',
@@ -107,7 +107,7 @@
     completed.addEventListener("click", (event) => {
       let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
-      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+      fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',
           body: JSON.stringify({ bet: {completed: true } }),
           credentials: 'same-origin',
@@ -128,7 +128,7 @@
     incompleted.addEventListener("click", (event) => {
       let betId = window.location.href.slice(-7).match(/[1-9]+/)[0];
       let challengeId = window.location.href.slice(-18).charAt(0);
-      fetch(`http://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
+      fetch(`https://${domain}/api/v1/challenges/${challengeId}/bets/${betId}`, {
           method: 'PATCH',
           body: JSON.stringify({ bet: {completed: false } }),
           credentials: 'same-origin',
