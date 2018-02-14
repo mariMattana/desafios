@@ -28,12 +28,6 @@
   position: relative;
   background-color: #e5e5e5;
 }
-.card-invite {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 25px;
-}
 .card-image {
   position: absolute;
   left: 20px;
@@ -131,12 +125,24 @@
   background-color: #f4caa4;
 }
 #sidebar-btn {
-  margin-left: 225px
+  margin-left: 95%;
+  padding-top: 10%;
+}
+.sidebar h2 {
+  margin-left: 10px;
+  margin-top: -27px;
+  font-size: 33px;
 }
 .sidebar h3 {
   margin-left: 10px;
+  margin-top: 30px;
 }
-
+.sidebar-invite {
+  position: absolute;
+  right: 175px;
+  top: 30px;
+  font-size: 25px;
+}
 .bet-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -155,7 +161,7 @@
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -235,4 +241,53 @@
   color: $strong-red;
 }
 
+.btn-accept-bet {
+  margin-top: -35%;
+  margin-left: 65%;
+}
+#accept-bet {
+  color: green;
+  font-size: 30px;
+  display: inline;
+  padding: 10px;
+  cursor: pointer;
+}
+#decline-bet {
+  color: $strong-red;
+  font-size: 30px;
+  display: inline;
+  cursor: pointer;
+}
+.btn-complete-bet {
+  margin-top: -35%;
+  margin-left: 65%;
+}
+#challenge-completed {
+  color: green;
+  cursor: pointer;
+  font-size: 30px;
+  padding: 10px;
+}
+#challenge-incomplete {
+  color: $strong-red;
+  cursor: pointer;
+  font-size: 30px;
+}
+.confirm-bet {
+  margin-top: -38%;
+  margin-left: 50%;
+}
+.confirm-bet p {
 
+}
+#confirmed {
+  color: green;
+  cursor: pointer;
+  font-size: 30px;
+  padding: 10px;
+}
+#denied {
+  color: $strong-red;
+  cursor: pointer;
+  font-size: 30px;
+}
