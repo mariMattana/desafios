@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :bets
   has_many :progresses
   has_many :notifications, foreign_key: :recipient_id
+  has_many :accounts
 
   mount_uploader :photo, PhotoUploader
 

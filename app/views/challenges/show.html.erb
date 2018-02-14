@@ -117,6 +117,12 @@
             </li>
           <% end %>
         </ul>
+        <div class="slidecontainer">
+          <p id="min-value">Min: R$20,00</p>
+          <input type="range" min="20" max="250" value="125" class="slider" id="bet-range">
+          <p id="max-value">Max: R$250,00</p>
+          <p id="output"></p>
+        </div>
       <% end %>
     </div>
     <div class="modal-btns">
@@ -152,7 +158,18 @@
       users[i].addEventListener("click", function() {
         removeAllActives();
         this.className += " active";
+        remainOnlyActiveUser();
       });
+    }
+  }
+
+  function remainOnlyActiveUser() {
+    let users = document.getElementsByClassName("search-user");
+    for (let i = 0; i < users.length; i++) {
+      console.log(users[i] + " entrei aqui " + i);users
+      if (!users[i].classList.contains("active")) {
+        users[i].parentNode.removeChild(users[i]);
+      }
     }
   }
 

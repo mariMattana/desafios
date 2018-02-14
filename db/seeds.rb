@@ -3,6 +3,8 @@ Challenge.destroy_all
 User.destroy_all
 Progress.destroy_all
 Bank.destroy_all
+Account.destroy_all
+Charity.destroy_all
 
 puts "Creating Users ..."
 users = []
@@ -86,3 +88,39 @@ banks = JSON.parse(open(url).read)
 banks.each do |bank|
   Bank.create!(name: bank["name"], code: bank["code"])
 end
+
+puts "Creating Accounts ..."
+accounts = []
+accounts_hash = [
+  {agency: "111-1", account: "3456-7", bank: Bank.find_by(code: "001"), user: users[0]},
+  {agency: "222-2", account: "4567-8", bank: Bank.find_by(code: "001"), user: users[1]},
+  {agency: "333-3", account: "5678-9", bank: Bank.find_by(code: "341"), user: users[2]},
+  {agency: "444-4", account: "6789-0", bank: Bank.find_by(code: "341"), user: users[3]},
+  {agency: "555-5", account: "7890-1", bank: Bank.find_by(code: "033"), user: users[4]},
+  {agency: "666-6", account: "8901-2", bank: Bank.find_by(code: "033"), user: users[5]},
+  {agency: "777-7", account: "9012-3", bank: Bank.find_by(code: "237"), user: users[6]},
+  {agency: "888-8", account: "0123-4", bank: Bank.find_by(code: "104"), user: users[7]}
+]
+accounts_hash.each do |account|
+  new_account = Account.create!(agency: account[:agency], account: account[:account], bank: account[:bank], user: account[:user])
+  accounts << new_account
+end
+
+puts "Creating Charity Institutions ..."
+charities = []
+charities_hash = [
+  {name: "Istituto Ayrton Senna", social_cause: "Educação", url: "http://res.cloudinary.com/danielphr/image/upload/v1518028015/instituto_ayrton_senna_h4ybfv.png"},
+  {name: "Istituto do Câncer Infantil", social_cause: "Saúde", url: "http://res.cloudinary.com/danielphr/image/upload/v1518028018/instituto_cancer_infantil_thgz7f.png"},
+  {name: "SOS Mata Atlântica", social_cause: "Meio Ambiente", url: "http://res.cloudinary.com/danielphr/image/upload/v1518028034/sos-mata-atlantica_ci6xdq.png"},
+  {name: "Abrace", social_cause: "Saúde", url: "http://res.cloudinary.com/danielphr/image/upload/v1518027974/abrace_z0riju.png"}
+]
+charities_hash.each do |charity|
+  new_charity = Charity.new(name: charity[:name], social_cause: charity[:social_cause])
+  new_charity.remote_picture_url = charity[:url]
+  new_charity.save
+  charities << new_charity
+end
+
+
+
+
