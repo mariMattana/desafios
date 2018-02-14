@@ -36,7 +36,6 @@
   var slider = document.getElementById("bet-range");
   var output = document.getElementById("output");
   if (slider !== null) {
-    console.log("slider error");
     output.innerHTML = "Valor: R$" + slider.value + ",00";
 
     slider.oninput = function() {

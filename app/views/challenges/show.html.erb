@@ -420,7 +420,6 @@
   var slider = document.getElementById("bet-range");
   var output = document.getElementById("output");
   if (slider !== null) {
-    console.log("slider error");
     output.innerHTML = "Valor: R$" + slider.value + ",00";
 
     slider.oninput = function() {
@@ -430,7 +429,7 @@
 
   domain = document.domain;
   if (domain === "localhost") {
-    domain = "localhost:3000"
+    domain = "http://localhost:3000"
   }
 
   let accept = document.getElementById("accept-bet");

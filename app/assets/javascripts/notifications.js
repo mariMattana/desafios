@@ -40,12 +40,12 @@ function updateNotifications(json) {
 
 };
 
-let domain = "https://" + document.domain;
+let domain = document.domain;
 if (domain === "localhost") {
-  domain = "localhost:3000"
+  domain = "http://localhost:3000"
 }
 function getNotifications(){
-  fetch(`https://meusdesafios.herokuapp.com/api/v1/notifications`, {
+  fetch(`${domain}/api/v1/notifications`, {
     method: 'GET'
   })
   .then(data => data.json())
@@ -57,7 +57,7 @@ setInterval(getNotifications, 10000);
 getNotifications();
 
 let markNotificationAsRead = (notification_id) => {
-  fetch(`https://meusdesafios.herokuapp.com/api/v1/notifications/${notification_id}`, {
+  fetch(`${domain}/api/v1/notifications/${notification_id}`, {
       method: 'PATCH',
       headers: {
        // 'X-User-Email': 'daniel.phr@gmail.com',
