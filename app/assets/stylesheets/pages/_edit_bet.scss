@@ -18,23 +18,15 @@
 #max-value {
   display: inline;
 }
-.btn-opt-bet {
-  font-size: 40px;
-  margin-left: 80%;
-}
+// .btn-opt-bet {
+//   font-size: 40px;
+//   margin-left: 80%;
+// }
 #accept {
   color: green;
   cursor: pointer;
 }
 #decline {
-  color: $strong-red;
-  cursor: pointer;
-}
-#challenge-completed {
-  color: green;
-  cursor: pointer;
-}
-#challenge-incompleted {
   color: $strong-red;
   cursor: pointer;
 }
