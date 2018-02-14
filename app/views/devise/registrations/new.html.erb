@@ -35,11 +35,7 @@
             <div class="form-inputs input-field">
               <%= f.input :first_name, required: true, autofocus: true %>
               <%= f.input :last_name, required: true %>
-              <%= f.input :nickname, required: true %>
-              <%= f.input :cpf, required: true %>
-              <%= f.input :birthday, required: true %>
-              <%= f.input :photo, required: true %>
-              <%= f.input :photo_cache, as: :hidden %>
+
               <%= f.input :email, required: true %>
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
               <%= f.input :password_confirmation, required: true %>
