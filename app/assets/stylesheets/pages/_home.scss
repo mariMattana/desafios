@@ -89,26 +89,15 @@ body {
 }
 .user-experience {
   background-color: $light-gray;
-  margin-top: 70px;
+  // margin-top: 70px;
   padding: 30px;
+  height: auto;
 }
 .experience-img img {
   margin: 0;
   width: 250px;
   height: 250px;
   border-radius: 50%;
-}
-#first-experience {
-  width: 630px;
-}
-#second-experience {
-  width: 630px;
-}
-#second-experience p {
-  margin-left: 80px;
-}
-#third-experience {
-  width: 630px;
 }
 .charity-institutions {
   padding-top: 30px;
@@ -120,5 +109,8 @@ body {
 }
 .charity-institutions img {
   height: 250px;
-  margin: 0 20%;
+  margin: 0;
+}
+.align-center{
+  vertical-align: middle;
 }
