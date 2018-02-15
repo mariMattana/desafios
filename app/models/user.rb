@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :bets
   has_many :progresses
   has_many :notifications, foreign_key: :recipient_id
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
 
   mount_uploader :photo, PhotoUploader
 
