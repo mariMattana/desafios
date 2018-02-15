@@ -20,8 +20,6 @@
     </div>
   <% end %>
 
-
-
   <div class="challenge-info" id="challenge-start-date">
     <p class="challenge-info-title">Início</p>
     <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
@@ -49,7 +47,7 @@
 <div class="challenge-progresses">
   <h1>Meu Progresso</h1>
   <%= render "form_progress" %>
-  <%= icon("comments", id: "form-progress-button" ) %>
+  <span onclick="displayProgressForm()"><%= icon("comments", id: "form-progress-button" ) %></span>
   <% @progresses.each do |progress| %>
     <% if progress.user == @challenge.user %>
       <div class="challenge-progress-owner">
@@ -93,13 +91,21 @@
           <% if policy(bet).update? %>
             <% if bet.accepted == "waiting_confirmation" %>
               <div class="btn-accept-bet">
-                <%= icon("check", id: "accept-bet") %>
-                <%= icon("times", id: "decline-bet") %>
+                <div id="accept-bet">
+                  <%= icon("check") %>
+                </div>
+                <div id="decline-bet">
+                  <%= icon("times") %>
+                </div>
               </div>
             <% elsif bet.accepted == "accepted" && bet.completed.nil? && !@challenge.completed.nil? %>
               <div class="btn-complete-bet">
-                <%= icon("check", id: "challenge-completed") %>
-                <%= icon("times", id: "challenge-incomplete") %>
+                <div id="challenge-completed">
+                  <%= icon("check") %>
+                </div>
+                <div id="challenge-incomplete">
+                  <%= icon("times") %>
+                </div>
               </div>
             <% end %>
           <% end %>
@@ -145,8 +151,8 @@
         </ul>
         <div class="slidecontainer hidden" id="slider-container">
           <p id="min-value">Min: R$20,00</p>
-          <input type="range" min="20" max="250" value="125" class="slider" id="bet-range">
-          <p id="max-value">Max: R$250,00</p>
+          <input type="range" min="20" max="<%= @challenge.value.to_i %>" value="<%= @challenge.value.to_i / 2 %>" class="slider" id="bet-range">
+          <p id="max-value">Max: <%= humanized_money_with_symbol(@challenge.value) %></p>
           <p id="output"></p>
         </div>
       <% end %>
