@@ -1,5 +1,5 @@
 class Api::V1::ChallengesController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [ :index, :show, :update ]
+  acts_as_token_authentication_handler_for User
   before_action :set_challenge, only: [ :show, :update, :destroy ]
 
   def index
