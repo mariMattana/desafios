@@ -299,8 +299,8 @@
         body: JSON.stringify({ bet: {user_id: id, value: value } }),
         credentials: 'same-origin',
         headers: {
-          'X-User-Email': 'daniel.phr@gmail.com',
-          'X-User-Token': "eSWMGzTehFtHuizkCprp",
+          'X-User-Email': userEmail,
+          'X-User-Token': userToken,
           'Content-Type': 'application/json'
         }
       })
@@ -379,8 +379,8 @@
           body: JSON.stringify({ challenge: {completed: true } }),
           credentials: 'same-origin',
           headers: {
-            'X-User-Email': 'daniel.phr@gmail.com',
-            'X-User-Token': "eSWMGzTehFtHuizkCprp",
+            'X-User-Email': userEmail,
+            'X-User-Token': userToken,
             'Content-Type': 'application/json'
           }
         })
@@ -399,8 +399,8 @@
           body: JSON.stringify({ challenge: {completed: false } }),
           credentials: 'same-origin',
           headers: {
-            'X-User-Email': 'daniel.phr@gmail.com',
-            'X-User-Token': "eSWMGzTehFtHuizkCprp",
+            'X-User-Email': userEmail,
+            'X-User-Token': userToken,
             'Content-Type': 'application/json'
           }
         })
@@ -448,8 +448,8 @@
         body: JSON.stringify({bet: {accepted: "accepted", value: slider.value}}),
         credentials: 'same-origin',
         headers: {
-          'X-User-Email': 'daniel.phr@gmail.com',
-          'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+          'X-User-Email': userEmail,
+          'X-User-Token': userToken,
           'Content-Type': 'application/json'
         }
       })
@@ -474,8 +474,8 @@
         body: JSON.stringify({bet: {accepted: "declined"}}),
         credentials: 'same-origin',
         headers: {
-          'X-User-Email': 'daniel.phr@gmail.com',
-          'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+          'X-User-Email': userEmail,
+          'X-User-Token': userToken,
           'Content-Type': 'application/json'
         }
       })
@@ -500,8 +500,8 @@
           body: JSON.stringify({ bet: {completed: true } }),
           credentials: 'same-origin',
           headers: {
-            'X-User-Email': 'daniel.phr@gmail.com',
-            'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+            'X-User-Email': userEmail,
+            'X-User-Token': userToken,
             'Content-Type': 'application/json'
           }
         })
@@ -528,8 +528,8 @@
           body: JSON.stringify({ bet: {completed: false } }),
           credentials: 'same-origin',
           headers: {
-            'X-User-Email': 'daniel.phr@gmail.com',
-            'X-User-Token': "wzZrzxQo3329SPyYcfBW",
+            'X-User-Email': userEmail,
+            'X-User-Token': userToken,
             'Content-Type': 'application/json'
           }
         })

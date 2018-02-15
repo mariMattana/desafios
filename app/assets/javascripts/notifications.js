@@ -46,9 +46,18 @@ if (domain === "localhost") {
 } else {
   domain = "https://meusdesafios.herokuapp.com"
 }
+
+let userEmail = document.getElementById("email").value;
+let userToken = document.getElementById("token").value;
+
 function getNotifications(){
   fetch(`${domain}/api/v1/notifications`, {
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'X-User-Email': userEmail,
+      'X-User-Token': userToken,
+      'Content-Type': 'application/json'
+    }
   })
   .then(data => data.json())
   .catch(error => console.error('Error:', error))
@@ -62,8 +71,8 @@ let markNotificationAsRead = (notification_id) => {
   fetch(`${domain}/api/v1/notifications/${notification_id}`, {
       method: 'PATCH',
       headers: {
-       // 'X-User-Email': 'daniel.phr@gmail.com',
-       // 'X-User-Token': "eSWMGzTehFtHuizkCprp",
+       'X-User-Email': userEmail,
+       'X-User-Token': userToken,
         'Content-Type': 'application/json'
       }
     })

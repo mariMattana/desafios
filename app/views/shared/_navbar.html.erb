@@ -8,8 +8,9 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
-
       <!-- Links when logged in -->
+      <span id="user-email"><%= hidden_field_tag("email", value = current_user.email) %></span>
+      <span id="user-token"><%= hidden_field_tag("token", value = current_user.authentication_token) %></span>
       <%= link_to "Criar Desafio", new_challenge_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Mensagens", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <div class="dropdown" id="notifications-dropdow">
