@@ -1,9 +1,9 @@
 class Api::V1::NotificationsController < Api::V1::BaseController
-  acts_as_token_authentication_handler_for User, except: [ :index ]
+  acts_as_token_authentication_handler_for User
   before_action :set_notification, only: [ :update ]
 
   def index
-    @notifications = policy_scope(Notification).order(created_at: :desc)
+    @notifications = policy_scope(Notification).where(recipient: current_user).order(created_at: :desc)
   end
 
   def update

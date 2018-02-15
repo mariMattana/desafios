@@ -1,7 +1,7 @@
 class NotificationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(recipient: user)
+      scope.all
     end
   end
 

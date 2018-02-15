@@ -7,13 +7,16 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    if params[:query].present?
-      @users =  User.search_by_first_and_last_name(params[:query])
-    else
-      @users = User.all
-    end
     @challenge = Challenge.find(params[:id])
     @bets = Bet.where(challenge: @challenge)
+    @users =  User.search_by_first_and_last_name(params[:query])
+    @users.each do |user|
+      if user == current_user
+        @users.delete(user)
+      # elsif @challenge.bets.users.include?(user)
+      #   @users.delete(user)
+      end
+    end
     @progress = Progress.new
     @progresses = Progress.where(challenge: @challenge)
     authorize @challenge
