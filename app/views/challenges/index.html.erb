@@ -1,10 +1,13 @@
-<div class="container">
+<div class="container challenges">
+  <h1 class="text-center des-and">Desafios em Andamento</h1>
+  <div class="row">
   <% @challenges.each do |challenge| %>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
       <%= link_to challenge_path(challenge) do %>
         <div class="card card-challenge-index">
           <div class="card-image-index">
             <%= cl_image_tag(challenge.user.photo,
-            width: 120, height: 120, crop: :fill) %>
+            width: 100, height: 100, crop: :fill) %>
           </div>
           <div class="card-title-index">
             <h1><%= challenge.title %></h1>
@@ -13,10 +16,14 @@
             <% if challenge.completed %>
               <%= icon("check-circle", class: "check-challenge-completion") %><span> Desafio Alcançado</span>
             <% else %>
-              <h3>Faltam <span class="date-left"><%= (challenge.end_date - Date.today).to_i %></span> dias</h3>
+              <div>
+                <h3>Faltam <span class="date-left"><%= (challenge.end_date - Date.today).to_i %></span> dias</h3>
+              </div>
             <% end %>
           </div>
         </div>
       <% end %>
+    </div>
   <% end %>
+  </div>
 </div>

@@ -1,26 +1,39 @@
+.challenges {
+  width: 95%;
+  padding-top: 30px;
+}
+
+.des-and{
+  margin-bottom: 40px;
+  color: $red;
+  font-weight: bold;
+}
+
 .card-challenge-index {
-  width: 40%;
+  display: center;
+  width: 90%;
   height: 200px;
   margin: 20px;
-  margin-left: 0;
   position: relative;
   background-color: $light-gray;
   color: $red;
 }
 .card-image-index {
   position: absolute;
-  left: 20px;
-  top: 35px;
+  left: 10px;
+  top: 50px;
+  height: 80px;
+  width: 80px;
 }
 .card-image-index img {
   border-radius: 50%;
 }
 .card-title-index {
   position: absolute;
-  right: 20px;
-  top: 30px;
+  left: 40%;
+  top: 20px;
   padding: 0;
-  width: 270px;
+  width: 200px;
 }
 .card-title-index h1 {
   padding: 10px;
@@ -29,9 +42,10 @@
 }
 .card-date-index {
   position: absolute;
-  left: 185px;
+  left: 40%;
   bottom: 15px;
   padding: 0;
+  // width: 200px;
 }
 .card-date-index h3 {
   margin: 0;
