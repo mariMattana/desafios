@@ -153,16 +153,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-// <%= content_for :title, "Desafio"%>
-// <% if @challenge.completed.nil? && policy(@challenge).update? %>
-//   <div id="end-challenge">
-//     <button id="btn-end-challenge">Finalizar Desafio</button>
-//     <div id="end-challenge-icons">
-//       <%= icon("check", id: "win-challenge") %>
-//       <%= icon("times", id: "loose-challenge") %>
-//     </div>
-//   </div>
-// <% end %>
 
 
 // <div class="row">
