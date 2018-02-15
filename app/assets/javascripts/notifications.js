@@ -25,8 +25,7 @@ function updateNotifications(json) {
       });
     }
     li.id = "notification-" + i.toString();
-    a.innerHTML = json[i].actor.first_name + " " + json[i].actor.last_name + " " + json[i].action + " ";
-    a.innerHTML += json[i].recipient.first_name + " " + json[i].recipient.last_name;
+    a.innerHTML = json[i].actor.first_name + " " + json[i].actor.last_name + " " + json[i].action;
     a.setAttribute("href", json[i].url);
   };
   let notificationsDropdow = document.getElementById("notifications-dropdow");

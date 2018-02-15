@@ -9,7 +9,32 @@
   </div>
 </div>
 
-<div class="challenge-infos">
+<div class="challenge-dashboard">
+  <div class="challenge-infos">
+    <div class="challenge-info" id="challenge-start-date">
+      <p class="challenge-info-title">Início</p>
+      <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
+    </div>
+    <% if @challenge.completed.nil? %>
+      <div class="challenge-info" id="challenge-left-days">
+        <p class="challenge-info-title">Faltam</p>
+        <p class="challenge-info-description"><%= (@challenge.end_date - Date.today).to_i %> Dias</p>
+      </div>
+    <% elsif @challenge.completed %>
+      <div class="challenge-info" id="challenge-left-days">
+        <p class="challenge-info-description"><%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %></p>
+      </div>
+    <% elsif !@challenge.completed %>
+      <div class="challenge-info" id="challenge-left-days">
+        <p class="challenge-info-description"><%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %></p>
+      </div>
+    <% end %>
+    <div class="challenge-info" id="challenge-value">
+      <p class="challenge-info-title">Valor</p>
+      <p class="challenge-info-description"><%= humanized_money_with_symbol(@challenge.value) %></p>
+    </div>
+  </div>
+
   <% if @challenge.completed.nil? && policy(@challenge).update? %>
     <div id="end-challenge">
       <button id="btn-end-challenge">Finalizar Desafio</button>
@@ -19,29 +44,6 @@
       </div>
     </div>
   <% end %>
-
-  <div class="challenge-info" id="challenge-start-date">
-    <p class="challenge-info-title">Início</p>
-    <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
-  </div>
-  <% if @challenge.completed.nil? %>
-    <div class="challenge-info" id="challenge-left-days">
-      <p class="challenge-info-title">Faltam</p>
-      <p class="challenge-info-description"><%= (@challenge.end_date - Date.today).to_i %> Dias</p>
-    </div>
-  <% elsif @challenge.completed %>
-    <div class="challenge-info" id="challenge-left-days">
-      <p class="challenge-info-description"><%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %></p>
-    </div>
-  <% elsif !@challenge.completed %>
-    <div class="challenge-info" id="challenge-left-days">
-      <p class="challenge-info-description"><%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %></p>
-    </div>
-  <% end %>
-  <div class="challenge-info" id="challenge-value">
-    <p class="challenge-info-title">Valor</p>
-    <p class="challenge-info-description"><%= humanized_money_with_symbol(@challenge.value) %></p>
-  </div>
 </div>
 
 <div class="challenge-progresses">
