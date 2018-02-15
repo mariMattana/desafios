@@ -1,17 +1,13 @@
 function displayProgressForm() {
   document.getElementById("progress-form").classList.toggle("hidden");
-  openProgressForm = document.getElementById("open-form-progress");
-  if (openProgressForm.style.top === "4%") {
-    openProgressForm.style.top = "6%";
-  } else {
-    openProgressForm.style.top = "4%";
-  }
+  // openProgressForm = document.getElementById("open-form-progress");
+  // if (openProgressForm.style.top === "4%") {
+  //   openProgressForm.style.top = "6%";
+  // } else {
+  //   openProgressForm.style.top = "4%";
+  // }
 }
 
-// function displayProgressForm() {
-//   document.getElementById("progress-form").classList.toggle("hidden");
-
-// }
 // $('#progress-form').submit(function(e){
 //   e.preventDefault();
 
