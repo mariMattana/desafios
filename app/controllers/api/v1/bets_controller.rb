@@ -59,23 +59,23 @@ class Api::V1::BetsController < Api::V1::BaseController
 
   def inviteUserToBet
     # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
-    Notification.create!(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
+    Notification.create!(recipient: @bet.user, actor: @challenge.user, action: "convidou você para um desafio", notifiable: @bet)
   end
 
   def reply_to_challenge_user
     # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
     if @bet.accepted == "accepted"
-      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "aceitou a aposta", notifiable: @bet)
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "aceitou seu desafio", notifiable: @bet)
     elsif @bet.accepted == "declined"
-      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "recusou a aposta", notifiable: @bet)
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "recusou seu desafio", notifiable: @bet)
     end
   end
 
   def end_bet
     if @bet.completed
-      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "concordou", notifiable: @bet)
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "concordou com a conclusão do desafio", notifiable: @bet)
     else
-      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "não concordou", notifiable: @bet)
+      Notification.create!(recipient: @bet.challenge.user, actor: @bet.user, action: "não concordou com a conclusão do desafio", notifiable: @bet)
     end
     # create payment
   end

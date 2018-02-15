@@ -57,7 +57,7 @@ class BetsController < ApplicationController
 
   def inviteUserToBet
     # UserMailer.invitation(@challenge.user, @bet.user).deliver_now
-    Notification.create(recipient: @bet.user, actor: @challenge.user, action: "convidou", notifiable: @bet)
+    Notification.create(recipient: @bet.user, actor: @challenge.user, action: "convidou você para um desafio", notifiable: @bet)
     # add message
   end
 
