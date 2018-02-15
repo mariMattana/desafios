@@ -10,7 +10,11 @@
 </div>
 
 <div class="challenge-dashboard">
-  <div class="challenge-infos">
+  <% if @challenge.completed.nil? %>
+    <div class="challenge-infos">
+  <% else %>
+    <div class="challenge-infos-finish">
+  <% end %>
     <div class="challenge-info" id="challenge-start-date">
       <p class="challenge-info-title">Início</p>
       <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
