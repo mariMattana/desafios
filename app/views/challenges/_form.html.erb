@@ -1,8 +1,19 @@
-<%= simple_form_for [@challenge] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :value %>
-  <%= f.submit "add a challenge", class: "btn btn-primary" %>
-<% end %>
+<div class="container sign-in-form">
+  <div class="form-style-3">
+    <fieldset>
+      <h2 class="text-center">Novo Desafio</h2>
+      <%= simple_form_for [@challenge] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :title %>
+          <%= f.input :description %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.input :value %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "Add Challenge", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </fieldset>
+  </div>
+</div>
