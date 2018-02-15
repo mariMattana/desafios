@@ -62,7 +62,7 @@ function getNotifications(){
   .catch(error => console.error('Error:', error))
   .then(response => updateNotifications(response))
 }
-setInterval(getNotifications, 10000);
+setInterval(getNotifications, 3000);
 
 getNotifications();
 

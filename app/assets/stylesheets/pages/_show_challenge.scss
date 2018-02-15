@@ -11,22 +11,21 @@ body {
   position: absolute;
 }
 #challenge-title {
-  background-color: rgba(226, 238, 243, 0.6);
   width: 40%;
   position: relative;
   top: 20%;
-  font-size: 45px;
+  font-size: 40px;
   padding-left: 3%;
   padding-right: 0;
   font-weight: bold;
-  color: black;
+  color: #F1E9DD;
 }
 #challenge-description {
   position: relative;
   top: 18%;
   width: 50%;
   font-size: 35px;
-  padding-left: 20px;
+  padding-left: 45px;
   padding-right: 0;
   color: $red;
 }
