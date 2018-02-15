@@ -1,17 +1,17 @@
-<div class="container sign-in-form">
+<div class="container challenge-form">
   <div class="form-style-3">
     <fieldset>
       <h2 class="text-center">Novo Desafio</h2>
       <%= simple_form_for [@challenge] do |f| %>
         <div class="form-inputs">
-          <%= f.input :title %>
-          <%= f.input :description %>
-          <%= f.input :start_date %>
-          <%= f.input :end_date %>
-          <%= f.input :value %>
+          <%= f.input :title, label: "Título" %>
+          <%= f.input :description, label: "Descrição"  %>
+          <%= f.input :start_date, as: :string, input_html: { class: 'datepicker date-input'}, label: "Início" %>
+          <%= f.input :end_date, as: :string, input_html: { class: 'datepicker date-input'}, label: "Final" %>
+          <%= f.input :value, label: "Valor" %>
         </div>
         <div class="form-actions">
-          <%= f.submit "Add Challenge", class: "btn btn-primary" %>
+          <%= f.submit "Adicionar Desafio", class: "btn btn-primary" %>
         </div>
       <% end %>
     </fieldset>
