@@ -1,0 +1,15 @@
+#progress-form {
+  width: calc(100vw - 400px);
+}
+.form-progress-button {
+  background-color: $red;
+  padding: 5px;
+  border-radius: 3px;
+  color: $light-red;
+  border: none;
+}
+.form-progress-button:hover {
+  text-decoration: none;
+  background-color: #840000;
+  color: $light-red;
+}
