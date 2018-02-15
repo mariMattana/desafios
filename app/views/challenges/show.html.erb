@@ -1,71 +1,78 @@
 <%= content_for :title, "Desafio"%>
-<% if @challenge.completed.nil? && policy(@challenge).update? %>
-  <div id="end-challenge">
-    <button id="btn-end-challenge">Finalizar Desafio</button>
-    <div id="end-challenge-icons">
-      <%= icon("check", id: "win-challenge") %>
-      <%= icon("times", id: "loose-challenge") %>
-    </div>
+
+<div class="banner-challenge">
+  <h1 id="challenge-title"><%= @challenge.title %></h1>
+  <p id="challenge-description"><%= @challenge.description %></p>
+  <div id="challenge-user-photo">
+    <%= cl_image_tag(@challenge.user.photo,
+    width: 200, height: 200, crop: :fill) %>
   </div>
-<% end %>
-
-<div class="row">
-<div class="container">
-    <div class="card card-challenge-show">
-      <div class="card-image">
-        <%= cl_image_tag(@challenge.user.photo,
-        width: 200, height: 200, crop: :fill) %>
-      </div>
-      <div class="card-title">
-        <h1><%= @challenge.title %></h1>
-      </div>
-      <div class="card-description">
-        <p><%= @challenge.description %></p>
-      </div>
-      <div class="card-date">
-        <% if @challenge.completed.nil? %>
-          <h3 id="time-left-completion">Faltam <span class="date-left"><%= (@challenge.end_date - Date.today).to_i %></span> dias</h3>
-        <% elsif @challenge.completed %>
-          <div class="challenge-complete">
-            <%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %>
-          </div>
-        <% elsif !@challenge.completed %>
-          <div class="challenge-incomplete">
-            <%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %>
-          </div>
-        <% end %>
-      </div>
-      <div class="card-start-date">
-        <p>Início: <%= @challenge.start_date.strftime("%d/%m/%y") %> </p>
-      </div>
-      <div class="card-info">
-        <p><%= humanized_money_with_symbol(@challenge.value) %></p>
-      </div>
-    </div>
-
-    <div class="flex-space-around">
-      <h1>Meus Progressos</h1>
-      <button class="form-progress-button" onclick="displayProgressForm()"><%= icon("comments", class: "icon-button-progress") %></button>
-    </div>
-
-    <%= render "form_progress" %>
-
-    <% @progresses.each do |progress| %>
-      <div class="card card-progress" id="new-progress">
-        <h3 class="card-progress-title"><%= progress.title %></h3>
-        <div class="card-progress-image">
-          <%= cl_image_tag(progress.user.photo, width: 100, height: 100, crop: :fill) %>
-        </div>
-        <p class="card-progress-name"><%= progress.user.first_name + " " + progress.user.last_name %></p>
-        <p class="card-progress-desc"><%= progress.description %></p>
-        <p class="card-progress-date">Postado em <%= progress.date %></p>
-        <div class="card-progress-img">
-          <%= cl_image_tag(progress.photo, width: 250, height: 150, crop: :fill) %>
-        </div>
-      </div>
-    <% end %>
 </div>
 
+<div class="challenge-infos">
+  <% if @challenge.completed.nil? && policy(@challenge).update? %>
+    <div id="end-challenge">
+      <button id="btn-end-challenge">Finalizar Desafio</button>
+      <div id="end-challenge-icons">
+        <%= icon("check", id: "win-challenge") %>
+        <%= icon("times", id: "loose-challenge") %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+  <div class="challenge-info" id="challenge-start-date">
+    <p class="challenge-info-title">Início</p>
+    <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
+  </div>
+  <% if @challenge.completed.nil? %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-title">Faltam</p>
+      <p class="challenge-info-description"><%= (@challenge.end_date - Date.today).to_i %> Dias</p>
+    </div>
+  <% elsif @challenge.completed %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-description"><%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %></p>
+    </div>
+  <% elsif !@challenge.completed %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-description"><%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %></p>
+    </div>
+  <% end %>
+  <div class="challenge-info" id="challenge-value">
+    <p class="challenge-info-title">Valor</p>
+    <p class="challenge-info-description"><%= humanized_money_with_symbol(@challenge.value) %></p>
+  </div>
+</div>
+
+<div class="challenge-progresses">
+  <h1>Meu Progresso</h1>
+  <%= render "form_progress" %>
+  <%= icon("comments", id: "form-progress-button" ) %>
+  <% @progresses.each do |progress| %>
+    <% if progress.user == @challenge.user %>
+      <div class="challenge-progress-owner">
+        <div class="progress-owner-photo">
+          <%= cl_image_tag(progress.user.photo, width: 200, height: 200, crop: :fill) %>
+        </div>
+        <h3 class="progress-title"><%= progress.title %></h3>
+        <p class="progress-description"><%= progress.description %></p>
+        <p class="progress-date">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
+      </div>
+    <% else %>
+      <div class="challenge-progress-participant">
+        <h3 class="progress-title-participant"><%= progress.title %></h3>
+        <p class="progress-description-participant"><%= progress.description %></p>
+        <div class="progress-participant-photo">
+          <%= cl_image_tag(progress.user.photo, width: 200, height: 200, crop: :fill) %>
+        </div>
+        <p class="progress-date-participant">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
+      </div>
+
+    <% end %>
+  <% end %>
+</div>
 
 <div class="sidebar">
   <% if policy(@challenge).invite? %>
@@ -75,7 +82,7 @@
   <% end %>
   <%= icon('sliders', id: "sidebar-btn") %>
   <div id="bets">
-    <h2>Bets</h2>
+    <h2>Participações</h2>
     <% @bets.each do |bet| %>
         <div class="card card-bet <%= bet.accepted %>" id="bet-<%= bet.id %>" >
           <div class="bet-img">
@@ -109,7 +116,6 @@
     <% end %>
   </div>
 </div>
-
 
 <!-- The Modal -->
 <div id="add-bet-modal" class="bet-modal">
@@ -420,7 +426,6 @@
   var slider = document.getElementById("bet-range");
   var output = document.getElementById("output");
   if (slider !== null) {
-    console.log("slider error");
     output.innerHTML = "Valor: R$" + slider.value + ",00";
 
     slider.oninput = function() {
@@ -430,7 +435,7 @@
 
   domain = document.domain;
   if (domain === "localhost") {
-    domain = "localhost:3000"
+    domain = "http://localhost:3000"
   }
 
   let accept = document.getElementById("accept-bet");

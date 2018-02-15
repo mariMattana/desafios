@@ -1,15 +1,67 @@
-#btn-end-challenge {
-  background-color: $light-gray;
-  color: $dark-gray;
+body {
+  margin: 0;
+  background-color: #FDFFFF;
+}
+.banner-challenge {
+  background-image: url("http://res.cloudinary.com/danielphr/image/upload/v1518656829/climbing_sofvbo.jpg");
+  width: 100%;
+  background-position: center center;
+  height: calc(70vh - 70px);
+  background-size: cover !important;
+  position: absolute;
+}
+#challenge-title {
+  background-color: rgba(226, 238, 243, 0.6);
+  width: 40%;
+  position: relative;
+  top: 20%;
+  font-size: 45px;
+  padding-left: 3%;
+  padding-right: 0;
+  font-weight: bold;
+  color: black;
+}
+#challenge-description {
+  position: relative;
+  top: 18%;
+  width: 50%;
+  font-size: 35px;
+  padding-left: 20px;
+  padding-right: 0;
+  color: $red;
+}
+#challenge-user-photo {
+  width: 200px;
+  position: absolute;
+  top: 63%;
+  margin-left: 10px;
+  box-shadow: 2px 2px #CCCCCC;
   border-radius: 3px;
-  margin-top: 10px;
-  margin-left: 20px;
-  display: inline;
+  z-index: 1;
+}
+.challenge-infos {
+  position: absolute;
+  top: 512px;
+  width: 110%;
+  height: 30vh;
+  background-color: $light-gray;
+  z-index: 0;
+}
+
+#btn-end-challenge {
+  background-color: $red;
+  color: $light-red;
+  border-radius: 3px;
+  margin-top: 60px;
+  margin-left: 23px;
 }
 #end-challenge-icons {
   display: none;
   font-size: 30px;
-  padding: 0 10px 0 10px;
+  padding: 0 20px 0 20px;
+  position: relative;
+  top: 50px;
+  right: 150px;
 }
 #win-challenge {
   display: inline;
@@ -21,6 +73,106 @@
   color: $strong-red;
   cursor: pointer;
 }
+
+
+.challenge-info {
+  margin-top: 0px;
+  margin-left: 35px;
+  font-size: 35px;
+  font-weight: bold;
+}
+.challenge-info-title {
+  color: $red;
+}
+#challenge-start-date {
+  position: relative;
+  top: -20%;
+  left: 20%;
+}
+#challenge-left-days {
+  position: relative;
+  top: -76%;
+  left: 40%;
+}
+#challenge-value {
+  position: relative;
+  top: -133%;
+  left: 60%;
+}
+
+.challenge-progresses {
+  width: calc(100vw - 400px);
+  position: absolute;
+  left: 0;
+  top: 731px;
+  background-color: #FDFFFF;
+}
+#form-progress-button {
+  position: absolute;
+  left: 90%;
+  top: 7%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+}
+#form-progress-button:hover {
+  color: $dark-gray;
+  text-decoration: none;
+}
+.challenge-progresses h1 {
+  text-align: center;
+  color: $red;
+  font-weight: bold;
+}
+.challenge-progress-owner {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.progress-owner-photo {
+  display: inline;
+}
+.progress-title {
+  display: inline;
+  position: relative;
+  top: -50px;
+  margin-left: 35px;
+  border-bottom: 7px solid $red;
+}
+.progress-description {
+  display: inline;
+  padding: 5px;
+  margin-left: -31%;
+}
+.progress-date {
+  margin-left: 3px;
+}
+.challenge-progress-participant {
+
+}
+.progress-participant-photo {
+  display: inline;
+  margin-left: 75%;
+}
+.progress-title-participant {
+  display: inline;
+  position: relative;
+  margin-left: 35%;
+  top: 60px;
+  border-bottom: 7px solid $red;
+}
+.progress-description-participant {
+  display: inline;
+  padding: 5px;
+  position: absolute;
+  top: 76%;
+  right: 28%;
+}
+.progress-date-participant {
+  margin-left: 76%;
+}
+
+
 .card-challenge-show {
   width: 75%;
   height: 300px;
@@ -87,10 +239,11 @@
 .sidebar {
   display: inline;
   position: absolute;
-  top: 90px;
-  right: 50px;
-  width: 300px;
+  top: 730px;
+  right: 0;
+  width: 400px;
   height: 100%;
+  background-color: $light-gray;
 }
 .card-bet {
   width: 100%;
@@ -125,8 +278,18 @@
   background-color: #f4caa4;
 }
 #sidebar-btn {
-  margin-left: 95%;
+  margin-left: 90%;
   padding-top: 10%;
+  cursor: pointer;
+}
+#sidebar-btn:hover {
+  color: $dark-gray;
+}
+#invite-user {
+  cursor: pointer;
+}
+#invite-user:hover {
+  color: $dark-gray;
 }
 .sidebar h2 {
   margin-left: 10px;
@@ -139,8 +302,8 @@
 }
 .sidebar-invite {
   position: absolute;
-  right: 175px;
-  top: 30px;
+  right: 110px;
+  top: 35px;
   font-size: 25px;
 }
 .bet-modal {
