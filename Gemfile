@@ -25,6 +25,8 @@ gem 'pg_search'
 gem 'money-rails'
 gem 'jquery-rails'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'rails-assets-zebra-datepicker', source: 'https://rails-assets.org'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
