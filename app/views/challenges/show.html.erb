@@ -26,10 +26,20 @@
     <p class="challenge-info-title">Início</p>
     <p class="challenge-info-description"><%= @challenge.start_date.strftime("%d/%m/%y") %></p>
   </div>
-  <div class="challenge-info" id="challenge-left-days">
-    <p class="challenge-info-title">Faltam</p>
-    <p class="challenge-info-description"><%= (@challenge.end_date - Date.today).to_i %></p>
-  </div>
+  <% if @challenge.completed.nil? %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-title">Faltam</p>
+      <p class="challenge-info-description"><%= (@challenge.end_date - Date.today).to_i %> Dias</p>
+    </div>
+  <% elsif @challenge.completed %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-description"><%= icon("check", class: "check-challenge-complete") + " Desafio Alcançado" %></p>
+    </div>
+  <% elsif !@challenge.completed %>
+    <div class="challenge-info" id="challenge-left-days">
+      <p class="challenge-info-description"><%= icon("times", class: "check-challenge-incomplete") + " Desafio Não Alcançado" %></p>
+    </div>
+  <% end %>
   <div class="challenge-info" id="challenge-value">
     <p class="challenge-info-title">Valor</p>
     <p class="challenge-info-description"><%= humanized_money_with_symbol(@challenge.value) %></p>
@@ -38,6 +48,7 @@
 
 <div class="challenge-progresses">
   <h1>Meu Progresso</h1>
+  <%= render "form_progress" %>
   <%= icon("comments", id: "form-progress-button" ) %>
   <% @progresses.each do |progress| %>
     <% if progress.user == @challenge.user %>
