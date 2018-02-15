@@ -1,0 +1,5 @@
+meta_product_name: "Meus Desafios"
+meta_title: "Meus Desafios - Incentivando Pessoas a Atingir suas Metas e Desafios"
+meta_description: "Incentivando Pessoas a Atingir suas Metas e Desafios"
+meta_image: "cover.png"                       # should exist in `app/assets/images/`
+# twitter_account: "@product_twitter_account"   # required for Twitter Cards
