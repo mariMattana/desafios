@@ -2,7 +2,6 @@
   <%= simple_form_for [@challenge, @progress] do |f| %>
     <%= f.input :title, label: "Título" %>
     <%= f.input :description, label: "Descrição" %>
-    <%= f.input :date, label: "Data" %>
     <%= f.input :photo, label: "Foto"  %>
     <%= f.input :photo_cache, as: :hidden %>
     <button class="form-progress-button" onclick="hiddeProgressForm()"><%= f.submit 'Postar Meu Progresso', class: "btn form-progress-button " %></button>
