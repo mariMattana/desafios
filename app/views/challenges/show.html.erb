@@ -423,14 +423,15 @@
   }
 
   function afterEndChallenge(response) {
-    let endChallenge = document.getElementById("end-challenge");
-    endChallenge.style.display = "none";
-    let timeLeftCompletion = document.getElementById("time-left-completion");
-    if (response === "Desafio Alcançado") {
-      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-check'></i> " + response;
-    } else {
-      timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-times' style='color: red;'></i> " + response;
-    }
+    location.reload();
+    // let endChallenge = document.getElementById("end-challenge");
+    // endChallenge.style.display = "none";
+    // let timeLeftCompletion = document.getElementById("time-left-completion");
+    // if (response === "Desafio Alcançado") {
+    //   timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-check'></i> " + response;
+    // } else {
+    //   timeLeftCompletion.innerHTML = "<i id='win-challenge' class='fa fa-times' style='color: red;'></i> " + response;
+    // }
   }
 
   // ----------------------------------------------------------------------------
@@ -520,13 +521,13 @@
         .then(data => data.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log(response))
-
-        completed.style.display = "none";
-        incomplete.style.display = "none";
-        let cardBet = document.getElementById("bet-" + betId);
-        let p = document.createElement("p");
-        cardBet.appendChild(p);
-        p.innerHTML = "Confirmado";
+        location.reload();
+        // completed.style.display = "none";
+        // incomplete.style.display = "none";
+        // let cardBet = document.getElementById("bet-" + betId);
+        // let p = document.createElement("p");
+        // cardBet.appendChild(p);
+        // p.innerHTML = "Confirmado";
     });
   }
 
@@ -548,12 +549,13 @@
         .then(data => data.json())
         .catch(error => console.error('Error:', error))
         .then(response => console.log(response))
-        completed.style.display = "none";
-        incomplete.style.display = "none";
-        let cardBet = document.getElementById("bet-" + betId);
-        let p = document.createElement("p");
-        cardBet.appendChild(p);
-        p.innerHTML = "Cancelado";
+        location.reload();
+        // completed.style.display = "none";
+        // incomplete.style.display = "none";
+        // let cardBet = document.getElementById("bet-" + betId);
+        // let p = document.createElement("p");
+        // cardBet.appendChild(p);
+        // p.innerHTML = "Cancelado";
     });
   }
 
