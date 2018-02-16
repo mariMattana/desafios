@@ -7,7 +7,7 @@ body {
   padding: 0;
 }
 .banner {
-  background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(40,40,40,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.5) 0%, rgba(40,40,40,0.7) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
   width: 100%;
   background-position: center center;
   color: $light-red;
@@ -28,6 +28,16 @@ body {
   font-size: 50px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  display: inline;
+  color: #cecece;
+}
+.logo {
+  font-family: $logo-font;
+  font-size: 70px;
+  display: inline;
+  background: -webkit-linear-gradient(#2a90af, #db5e34);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .banner p {
   font-size: 25px;
@@ -47,9 +57,11 @@ body {
 .buttons-landing {
   margin-left: 10px;
   margin-bottom: 15px;
+  margin-top: 70px;
 }
 .how-works {
   background-color: $light-gray;
+  min-height: 600px;
   color: $dark-gray;
   margin-top: 0;
   padding-bottom: 50px;
@@ -68,6 +80,148 @@ body {
   position: relative;
   z-index: 0;
 }
+// body {
+//   width: 100%;
+//   height: 100%;
+//   min-height: 100vh;
+//   margin: 0;
+//   font-family: 'Work Sans', sans-serif;
+//   font-weight: 400;
+// }
+// .background {
+//   width: 100%;
+//   height: 100%;
+//   min-height: 100vh;
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   z-index: -1;
+//   background: #a741ff;
+//   background: -moz-linear-gradient(top, #a741ff 0%, #5480fd 100%);
+//   background: -webkit-linear-gradient(top, #a741ff 0%, #5480fd 100%);
+//   background: linear-gradient(to bottom, #a741ff 0%, #5480fd 100%);
+// }
+.wrapper {
+  width: 80%;
+  height: 100%;
+  min-height: 300px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 30px 0;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -webkit-box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.15);
+  box-shadow: 0px 0px 30px 5px rgba(0,0,0,0.15);
+}
+.wrapper .header {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #81a2ff;
+  background: -moz-linear-gradient(top, #81a2ff 0%, #c1e1ff 100%);
+  background: -webkit-linear-gradient(top, #81a2ff 0%, #c1e1ff 100%);
+  background: linear-gradient(to bottom, #81a8a8 0%, #950000 100%);
+  overflow: hidden;
+}
+.wrapper .header .logo {
+  width: 50px;
+  height: auto;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+}
+.wrapper .header .content {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -85%);
+}
+.wrapper .header .content h2 {
+  padding: 8px;
+  color: #fff;
+  margin: 0;
+  font-size: 1.3em;
+  line-height: 1.0em;
+  width: 100%;
+  text-align: center;
+}
+.wrapper .header .content .buttons {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.wrapper .header .content .button {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  padding-left: 20px;
+  background: #000;
+  color: #fff;
+  font-size: 1.2em;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+  margin: 40px 5px 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 12px 20px -10px rgba(0,0,0,0.65);
+  -moz-box-shadow: 0px 12px 20px -10px rgba(0,0,0,0.65);
+  box-shadow: 0px 12px 20px -10px rgba(0,0,0,0.65);
+  transition: box-shadow 0.5s;
+}
+.wrapper .header .content .button:hover {
+  -webkit-box-shadow: 0px 0px 20px -10px rgba(0,0,0,0.65);
+  -moz-box-shadow: 0px 0px 20px -10px rgba(0,0,0,0.65);
+  box-shadow: 0px 0px 20px -10px rgba(0,0,0,0.65);
+  transition: box-shadow 0.5s;
+}
+.wrapper .header .content .button.apple {
+  background-image: url("http://vignette2.wikia.nocookie.net/respawnables/images/2/2f/Apple-logo-white-md.png/revision/latest?cb=20160224124036");
+  background-size: 20px auto;
+  background-repeat: no-repeat;
+  background-position: 20px center;
+}
+.wrapper .header .content .button.google {
+  background-image: url("http://vignette3.wikia.nocookie.net/starwars/images/e/ee/Google_Play_logo.png/revision/latest?cb=20141119230612");
+  background-size: 20px auto;
+  background-repeat: no-repeat;
+  background-position: 20px center;
+}
+.wrapper .header .waves {
+  width: calc(100% + 10px);
+  height: auto;
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  // z-index: 0;
+}
+.wrapper .header .curve {
+  display: none;
+  width: calc(100% + 10px);
+  height: auto;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  // z-index: 1;
+}
+
 .step-number {
   background-color: white;
   border: 2px solid $dark-gray;

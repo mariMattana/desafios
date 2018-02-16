@@ -114,6 +114,19 @@ body {
 .challenge-progresses {
   background-color: #FDFFFF;
 }
+#open-form-progress {
+  position: absolute;
+  left: 90%;
+  top: 0%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+}
+#form-progress-button:hover {
+  color: $dark-gray;
+  text-decoration: none;
+}
 
 .challenge-progresses h1 {
   top: 10%;

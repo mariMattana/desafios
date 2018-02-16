@@ -2,11 +2,11 @@
 <div class="container landing-page">
   <div class="banner">
     <div class="banner-content">
-      <h1>Bem Vindo ao meusdesafios.com</h1>
+      <h1>Bem-vindo ao </h1><span class="logo">meusdesafios.com</span>
       <p>Alcance os seus objetivos se desafiando</p>
       <div class="buttons-landing">
-        <%= link_to "Explorar",challenges_path, class: "btn btn-danger btn-lg button button-red buttons-landing" %>
-        <%= link_to "Me Desafiar",new_challenge_path, class: "btn btn-primary btn-lg button buttons-landing" %>
+        <%= link_to "Explorar",challenges_path, class: "button button-explore" %>
+        <%= link_to "Me Desafiar",new_challenge_path, class: "button button-challenge buttons-landing" %>
       </div>
     </div>
   </div>
@@ -16,29 +16,60 @@
     <div class="row">
 
       <div class="col-sm-4 col-xs-12">
-        <h1 class="step-number">1</h1>
-        <div class="card card-how-works" id="first-step">
-          <p>Crie um desafio.</p>
-          <p>Defina uma meta e escolha a data de início e fim.</p>
-          <p>Por fim, defina um valor.</p>
+        <div class="wrapper">
+          <div class="header">
+            <div class="content">
+              <h2>Crie um desafio</h2>
+              <h2>Defina uma meta</h2>
+              <h2>Defina um valor</h2>
+            </div>
+
+            <img class="curve" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/626071/bottom-curve_copy.svg">
+            <img class="waves" src="http://res.cloudinary.com/danielphr/image/upload/v1518791564/waves_orange_uhernm.svg">
+          </div>
         </div>
+        <div class="background"></div>
+      </div>
+
+
+      <div class="col-sm-4 col-xs-12">
+        <div class="wrapper">
+          <div class="header">
+            <div class="content">
+              <h2>Convide seus amigos</h2>
+              <h2>Comece a disputa</h2>
+              <h2>Publique seu progresso</h2>
+            </div>
+
+            <img class="curve" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/626071/bottom-curve_copy.svg">
+            <img class="waves" src="http://res.cloudinary.com/danielphr/image/upload/v1518791564/waves_orange_uhernm.svg">
+          </div>
+        </div>
+        <div class="background"></div>
       </div>
 
       <div class="col-sm-4 col-xs-12">
-        <h1 class="step-number">2</h1>
-        <div class="card card-how-works" id="second-step">
-          <p>Convide amigos para participar do seu desafio.</p>
-          <p>Agora parte do valor do seu desafio será disputado entre vocês.</p>
-        </div>
-      </div>
+        <div class="wrapper">
+          <div class="header">
+            <div class="content">
+              <h2>Complete o desafio</h2>
+              <h2>Receba seu dinheiro de volta</h2>
+              <h2>Doe para uma instituição</h2>
+            </div>
 
+            <img class="curve" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/626071/bottom-curve_copy.svg">
+            <img class="waves" src="http://res.cloudinary.com/danielphr/image/upload/v1518791564/waves_orange_uhernm.svg">
+          </div>
+        </div>
+        <div class="background"></div>
+      </div>
+<!--
       <div class="col-sm-4 col-xs-12">
-        <h1 class="step-number">3</h1>
         <div class="card card-how-works" id="third-step">
           <p>Se você completar o desafio, você recebe o seu dinheiro mais o do seus amigos.</p>
           <p>Se você não completar o desafio, seu dinheiro é doado para uma instituição de caridade.</p>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
