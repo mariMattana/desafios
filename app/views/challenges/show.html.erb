@@ -86,14 +86,16 @@
 
 <div class="col-md-3 sidebar">
 <!-- <div class="sidebar"> -->
-  <% if policy(@challenge).invite? %>
-    <div class="sidebar-invite" onclick="displaySearchUserModal()">
-      <%= icon('user-plus', id: 'invite-user') %>
-    </div>
-  <% end %>
   <%= icon('sliders', id: "sidebar-btn") %>
   <div id="bets">
-    <h2>Participações</h2>
+    <h2>Participações
+      <% if policy(@challenge).invite? %>
+        <span onclick="displaySearchUserModal()">
+          <%= icon('user-plus', id: 'invite-user') %>
+        </span>
+      <% end %>
+    </h2>
+
     <% @bets.each do |bet| %>
         <div class="card card-bet <%= bet.accepted %>" id="bet-<%= bet.id %>" >
           <div class="bet-img">
