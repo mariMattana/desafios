@@ -54,9 +54,10 @@
 <div class="col-md-9 challenge-progresses">
 <!-- <div class="challenge-progresses"> -->
 
-  <h1>Meu Progresso</h1>
+  <h1>Meu Progresso
+   <span onclick="displayProgressForm()"><%= icon("comments", id: "open-form-progress" ) %></span>
+  </h1>
   <%= render "form_progress" %>
-  <span onclick="displayProgressForm()"><%= icon("comments", id: "open-form-progress" ) %></span>
     <div class="progresses-msg">
   <% @progresses.each do |progress| %>
       <% if progress.user == @challenge.user %>

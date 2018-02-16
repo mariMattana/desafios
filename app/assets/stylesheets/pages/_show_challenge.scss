@@ -71,17 +71,15 @@ body {
 
 .challenge-infos {
   text-align: center;
-  margin-bottom: 20px;
   width: 70%;
   margin: 0 auto;
   padding: 30px;
 }
 .challenge-infos-finish {
   text-align: center;
-  margin-bottom: 20px;
-  width: 90%;
   margin: 0 auto;
   padding: 30px;
+  vertical-align: center;
 }
 
 .challenge-info {
@@ -89,8 +87,11 @@ body {
   font-weight: bold;
   text-align: center;
   display: inline-block;
-  padding: 0 90px 0 90px;
+  padding: 0 50px 0 50px;
   z-index: 1;
+}
+.challenge-info p {
+  font-size: 30px;
 }
 .challenge-info-title {
   color: $red;
@@ -113,15 +114,6 @@ body {
 
 .challenge-progresses {
   background-color: #FDFFFF;
-}
-#open-form-progress {
-  position: absolute;
-  left: 90%;
-  top: 0%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 40px;
 }
 #form-progress-button:hover {
   color: $dark-gray;
@@ -191,13 +183,13 @@ body {
 #open-form-progress {
   position: absolute;
   right: 10%;
-  top: 5%;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 40px;
+  color: #666666;
 }
-#form-progress-button:hover {
+#open-form-progress:hover {
   color: $dark-gray;
   text-decoration: none;
 }
