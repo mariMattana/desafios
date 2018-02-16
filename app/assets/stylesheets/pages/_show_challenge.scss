@@ -128,12 +128,12 @@ body {
   left: 0;
   top: 680px;
   background-color: #FDFFFF;
-  z-index: -1;
+  // z-index: -1;
 }
 #open-form-progress {
   position: absolute;
   left: 90%;
-  top: 7%;
+  top: 0%;
   background: none;
   border: none;
   cursor: pointer;
