@@ -7,7 +7,7 @@ body {
   padding: 0;
 }
 .banner {
-  background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(40,40,40,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.5) 0%, rgba(40,40,40,0.7) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518115092/kristopher-roller-320078_d3ic0w.jpg");
   width: 100%;
   background-position: center center;
   color: $light-red;
@@ -28,6 +28,16 @@ body {
   font-size: 50px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  display: inline;
+  color: #cecece;
+}
+.logo {
+  font-family: $logo-font;
+  font-size: 70px;
+  display: inline;
+  background: -webkit-linear-gradient(#2a90af, #db5e34);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .banner p {
   font-size: 25px;
@@ -47,6 +57,7 @@ body {
 .buttons-landing {
   margin-left: 10px;
   margin-bottom: 15px;
+  margin-top: 70px;
 }
 .how-works {
   background-color: $light-gray;

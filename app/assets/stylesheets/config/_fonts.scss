@@ -1,7 +1,8 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Cabin+Sketch");
 
 // Define fonts for body and headers
+$logo-font: 'Cabin Sketch', cursive;
 $body-font: 'Montserrat', sans-serif;
 $headers-font: 'Montserrat', sans-serif;
 // To use a font file (.woff) uncomment following lines
