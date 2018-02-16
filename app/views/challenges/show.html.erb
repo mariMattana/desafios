@@ -50,46 +50,52 @@
   <% end %>
 </div>
 
-
-
-<div class="challenge-progresses">
+<div class="row">
+<div class="col-md-9 challenge-progresses">
+<!-- <div class="challenge-progresses"> -->
 
   <h1>Meu Progresso</h1>
   <%= render "form_progress" %>
   <span onclick="displayProgressForm()"><%= icon("comments", id: "open-form-progress" ) %></span>
+    <div class="progresses-msg">
   <% @progresses.each do |progress| %>
-    <% if progress.user == @challenge.user %>
-      <div class="challenge-progress-owner">
-        <div class="progress-owner-photo">
-          <%= cl_image_tag(progress.user.photo, width: 200, height: 200, crop: :fill) %>
+      <% if progress.user == @challenge.user %>
+        <div class="challenge-progress-owner">
+          <div class="progress-owner-photo">
+            <%= cl_image_tag(progress.user.photo, width: 150, height: 150, crop: :fill) %>
+          </div>
+          <h3 class="progress-title"><%= progress.title %></h3>
+          <p class="progress-description"><%= progress.description %></p>
+          <p class="progress-date">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
         </div>
-        <h3 class="progress-title"><%= progress.title %></h3>
-        <p class="progress-description"><%= progress.description %></p>
-        <p class="progress-date">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
-      </div>
-    <% else %>
-      <div class="challenge-progress-participant">
-        <h3 class="progress-title-participant"><%= progress.title %></h3>
-        <p class="progress-description-participant"><%= progress.description %></p>
-        <div class="progress-participant-photo">
-          <%= cl_image_tag(progress.user.photo, width: 200, height: 200, crop: :fill) %>
+      <% else %>
+        <div class="challenge-progress-participant">
+          <h3 class="progress-title-participant"><%= progress.title %></h3>
+          <p class="progress-description-participant"><%= progress.description %></p>
+          <div class="progress-participant-photo">
+            <%= cl_image_tag(progress.user.photo, width: 150, height: 150, crop: :fill) %>
+          </div>
+          <p class="progress-date-participant">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
         </div>
-        <p class="progress-date-participant">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
-      </div>
 
-    <% end %>
+      <% end %>
   <% end %>
+    </div>
+<!-- </div> -->
 </div>
 
-<div class="sidebar">
-  <% if policy(@challenge).invite? %>
-    <div class="sidebar-invite" onclick="displaySearchUserModal()">
-      <%= icon('user-plus', id: 'invite-user') %>
-    </div>
-  <% end %>
+<div class="col-md-3 sidebar">
+<!-- <div class="sidebar"> -->
   <%= icon('sliders', id: "sidebar-btn") %>
   <div id="bets">
-    <h2>Participações</h2>
+    <h2>Participações
+      <% if policy(@challenge).invite? %>
+        <span onclick="displaySearchUserModal()">
+          <%= icon('user-plus', id: 'invite-user') %>
+        </span>
+      <% end %>
+    </h2>
+
     <% @bets.each do |bet| %>
         <div class="card card-bet <%= bet.accepted %>" id="bet-<%= bet.id %>" >
           <div class="bet-img">
@@ -130,6 +136,9 @@
         </div>
     <% end %>
   </div>
+<!-- </div> -->
+
+</div>
 </div>
 
 <!-- The Modal -->

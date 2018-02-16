@@ -3,77 +3,68 @@ body {
   background-color: #FDFFFF;
 }
 .banner-challenge {
-  background-image: url("http://res.cloudinary.com/danielphr/image/upload/v1518656829/climbing_sofvbo.jpg");
+  background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(40,40,40,0.6) 50%), url("http://res.cloudinary.com/danielphr/image/upload/v1518656829/climbing_sofvbo.jpg");
   width: 100%;
   background-position: center center;
   height: calc(70vh - 70px);
   background-size: cover !important;
-  position: absolute;
+  position: relative;
 }
 #challenge-title {
   width: 40%;
-  position: relative;
-  top: 20%;
+  position: absolute;
+  top: 10%;
+  left: 5%;
   font-size: 40px;
-  padding-left: 3%;
-  padding-right: 0;
   font-weight: bold;
   color: #F1E9DD;
 }
 #challenge-description {
-  position: relative;
-  top: 18%;
-  width: 50%;
-  font-size: 35px;
-  padding-left: 45px;
-  padding-right: 0;
-  color: $red;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  width: 60%;
+  font-size: 25px;
+  color: #F1E9DD;
 }
 #challenge-user-photo {
   width: 200px;
   position: absolute;
-  top: 63%;
-  margin-left: 10px;
+  bottom: -15%;
   box-shadow: 2px 2px #CCCCCC;
   border-radius: 3px;
   z-index: 1;
 }
 .challenge-dashboard {
-  position: absolute;
-  top: 512px;
+  position: relative;
   margin: 0;
   width: 100%;
   height: 30vh;
   background-color: $light-gray;
-  z-index: 0;
 }
 
-#end-challenge {
-  position: relative;
-  bottom: 80%;
-}
 #btn-end-challenge {
+  position: absolute;
   background-color: $red;
   color: $light-red;
-  border-radius: 3px;
-  margin-top: 60px;
-  margin-left: 23px;
+  bottom: 50%;
+  left: 1%;
 }
 #end-challenge-icons {
   display: none;
   font-size: 30px;
-  padding: 0 20px 0 20px;
-  position: relative;
-  top: 50px;
-  right: 150px;
 }
 #win-challenge {
-  display: inline;
+  position: absolute;
+  bottom: 40%;
+  left: 3%;
   color: green;
   cursor: pointer;
 }
 #loose-challenge {
-  display: inline;
+  position: absolute;
+  bottom:40%;
+  left: 6%;
   color: $strong-red;
   cursor: pointer;
 }
@@ -94,8 +85,6 @@ body {
 }
 
 .challenge-info {
-  // margin-top: 0px;
-  // margin-left: 35px;
   font-size: 35px;
   font-weight: bold;
   text-align: center;
@@ -123,12 +112,7 @@ body {
 }
 
 .challenge-progresses {
-  width: calc(100vw - 400px);
-  position: relative;
-  left: 0;
-  top: 680px;
   background-color: #FDFFFF;
-  // z-index: -1;
 }
 #open-form-progress {
   position: absolute;
@@ -143,129 +127,148 @@ body {
   color: $dark-gray;
   text-decoration: none;
 }
+
 .challenge-progresses h1 {
+  top: 10%;
   text-align: center;
   color: $red;
   font-weight: bold;
 }
 .challenge-progress-owner {
-  margin-top: 5%;
-  margin-left: 5%;
+  width: 97%;
+  height: 300px;
+  margin: 20px;
+  position: relative;
+  background-color: #FDFDFD;
 }
 .progress-owner-photo {
-  display: inline;
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+.progress-owner-photo img {
+  border-radius: 50%;
 }
 .progress-title {
-  display: inline;
-  position: relative;
-  top: -50px;
-  margin-left: 35px;
-  border-bottom: 7px solid $red;
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  border-bottom: 3px solid $red;
 }
 .progress-description {
-  display: inline;
-  padding: 5px;
-  margin-left: -31%;
+  position: absolute;
+  overflow-y: auto;
+  height: 50px;
+  top: 100px;
+  padding: 0;
+  margin: 0;
+  left: 30%;
+  width: 33%;
+  word-break: break-all;
 }
 .progress-date {
-  margin-left: 3px;
+  position: absolute;
+  left: 5%;
+  bottom:10%;
 }
-.challenge-progress-participant {
-
-}
-.progress-participant-photo {
-  display: inline;
-  margin-left: 75%;
+.progress-participant-photo img {
+  border-radius: 50%;
 }
 .progress-title-participant {
-  display: inline;
-  position: relative;
-  margin-left: 35%;
-  top: 60px;
-  border-bottom: 7px solid $red;
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  border-bottom: 3px solid $red;
 }
 .progress-description-participant {
-  display: inline;
-  padding: 5px;
   position: absolute;
-  top: 76%;
-  right: 28%;
+  top: 30%;
+  right: 25%;
 }
 .progress-date-participant {
   margin-left: 76%;
 }
-
-
-
-.card-challenge-show {
-  width: 75%;
-  height: 300px;
-  margin: 20px;
-  position: relative;
-  background-color: #e5e5e5;
-}
-.card-image {
+#open-form-progress {
   position: absolute;
-  left: 20px;
-  top: 20px;
-}
-.card-image-index img {
-  border-radius: 50%;
-}
-.card-title {
-  position: absolute;
-  right: 70px;
-  top: 10px;
-  padding: 0;
-  width: 500px;
-}
-.card-title h1 {
-  padding: 10px;
-  margin: 0;
-  font-size: 35px;
-}
-.card-description {
-  position: absolute;
-  right: 70px;
-  top: 100px;
-  height: 100px;
-  width: 500px;
-}
-.card-date {
-  position: absolute;
-  left: 385px;
-  bottom: 15px;
-  padding: 0;
-}
-.card-date-index h3 {
-  margin: 0;
-  padding: 10px;
-}
-.card-date-index i {
-  font-size: 70px;
-}
-.data-left {
-  border-radius: 50%;
-  background-color: white;
-  padding: 10px;
+  right: 10%;
+  top: 5%;
+  background: none;
+  border: none;
+  cursor: pointer;
   font-size: 40px;
 }
-.card-start-date {
-  position: absolute;
-  left: 55px;
-  bottom: 0px;
+#form-progress-button:hover {
+  color: $dark-gray;
+  text-decoration: none;
 }
-.card-info {
-  position: absolute;
-  bottom: 30px;
-  left: 75px;
-}
+
+// .card-challenge-show {
+//   width: 75%;
+//   height: 300px;
+//   margin: 20px;
+//   position: relative;
+//   background-color: #e5e5e5;
+// }
+// .card-image {
+//   position: absolute;
+//   left: 20px;
+//   top: 20px;
+// }
+// .card-image-index img {
+//   border-radius: 50%;
+// }
+// .card-title {
+//   position: absolute;
+//   right: 70px;
+//   top: 10px;
+//   padding: 0;
+//   width: 500px;
+// }
+// .card-title h1 {
+//   padding: 10px;
+//   margin: 0;
+//   font-size: 35px;
+// }
+// .card-description {
+//   position: absolute;
+//   right: 70px;
+//   top: 100px;
+//   height: 100px;
+//   width: 500px;
+// }
+// .card-date {
+//   position: absolute;
+//   left: 385px;
+//   bottom: 15px;
+//   padding: 0;
+// }
+// .card-date-index h3 {
+//   margin: 0;
+//   padding: 10px;
+// }
+// .card-date-index i {
+//   font-size: 70px;
+// }
+// .data-left {
+//   border-radius: 50%;
+//   background-color: white;
+//   padding: 10px;
+//   font-size: 40px;
+// }
+// .card-start-date {
+//   position: absolute;
+//   left: 55px;
+//   bottom: 0px;
+// }
+// .card-info {
+//   position: absolute;
+//   bottom: 30px;
+//   left: 75px;
+// }
 .sidebar {
   display: inline;
   position: absolute;
-  top: 730px;
   right: 0;
-  width: 400px;
   height: 100%;
   background-color: $light-gray;
 }
@@ -327,7 +330,7 @@ body {
   margin-top: 30px;
 }
 .sidebar-invite {
-  position: absolute;
+  position: relative;
   right: 110px;
   top: 35px;
   font-size: 25px;
