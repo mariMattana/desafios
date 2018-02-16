@@ -113,11 +113,11 @@ body {
 #open-form-progress {
   position: absolute;
   right: 10%;
-  top: 2%;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 40px;
+  color: #666666;
 }
 #form-progress-button:hover {
   color: $dark-gray;
