@@ -39,10 +39,12 @@ function updateNotifications(json) {
 
 };
 
-  let domain = document.domain;
-  if (domain === "localhost") {
-    domain = "http://localhost:3000"
-  }
+let domain = document.domain;
+if (domain === "localhost") {
+  domain = "http://localhost:3000"
+} else {
+  domain = "https://meusdesafios.herokuapp.com"
+}
 
 let userEmail = document.getElementById("email").value;
 let userToken = document.getElementById("token").value;
