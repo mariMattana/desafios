@@ -42,7 +42,7 @@ body {
 .banner p {
   font-size: 25px;
   font-weight: lighter;
-  color: rgb(255, 255, 255);
+  color: #cecece;
   opacity: 0.6;
   margin-bottom: 30px;
 }
@@ -71,6 +71,11 @@ body {
   margin-top: 0;
   padding-bottom: 50px;
   padding-top: 50px;
+  font-family: "Cabin Sketch", cursive;
+  font-size: 50px;
+  background: -webkit-linear-gradient(#2a90af, #db5e34);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .card-how-works {
   margin: 0 auto;

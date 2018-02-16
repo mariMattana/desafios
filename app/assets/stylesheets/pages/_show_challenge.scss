@@ -71,17 +71,15 @@ body {
 
 .challenge-infos {
   text-align: center;
-  margin-bottom: 20px;
   width: 70%;
   margin: 0 auto;
   padding: 30px;
 }
 .challenge-infos-finish {
   text-align: center;
-  margin-bottom: 20px;
-  width: 90%;
   margin: 0 auto;
   padding: 30px;
+  vertical-align: center;
 }
 
 .challenge-info {
@@ -89,8 +87,11 @@ body {
   font-weight: bold;
   text-align: center;
   display: inline-block;
-  padding: 0 90px 0 90px;
+  padding: 0 50px 0 50px;
   z-index: 1;
+}
+.challenge-info p {
+  font-size: 30px;
 }
 .challenge-info-title {
   color: $red;
@@ -110,6 +111,7 @@ body {
   font-weight: bold;
 }
 
+
 #open-form-progress {
   position: absolute;
   right: 10%;
@@ -119,6 +121,7 @@ body {
   font-size: 40px;
   color: #666666;
 }
+
 #form-progress-button:hover {
   color: $dark-gray;
   text-decoration: none;
@@ -211,6 +214,11 @@ body {
 .special{
   height: 100%;
   width:100%;
+}
+#open-form-progress:hover {
+  color: $dark-gray;
+  text-decoration: none;
+
 }
 // .card-challenge-show {
 //   width: 75%;
