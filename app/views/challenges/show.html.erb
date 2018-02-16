@@ -50,12 +50,12 @@
   <% end %>
 </div>
 
-<div class="row">
+<div class="row special">
 <div class="col-md-9 challenge-progresses">
 <!-- <div class="challenge-progresses"> -->
 
   <h1>Meu Progresso
-   <span onclick="displayProgressForm()"><%= icon("comments", id: "open-form-progress" ) %></span>
+    <span onclick="displayProgressForm()" title='Adicione um cometário na jornada' id="open-form-progress"><%= icon("comments") %></span>
   </h1>
   <%= render "form_progress" %>
     <div class="progresses-msg">
@@ -67,10 +67,16 @@
           </div>
           <h3 class="progress-title"><%= progress.title %></h3>
           <p class="progress-description"><%= progress.description %></p>
+          <div class="progress-img-owner">
+            <%= cl_image_tag(progress.photo, width: 200, height: 200, crop: :fill) %>
+          </div>
           <p class="progress-date">Postado em <%= progress.created_at.strftime("%d/%m/%y") %></p>
         </div>
       <% else %>
         <div class="challenge-progress-participant">
+          <div class="progress-img-participant">
+            <%= cl_image_tag(progress.photo, width: 200, height: 200, crop: :fill) %>
+          </div>
           <h3 class="progress-title-participant"><%= progress.title %></h3>
           <p class="progress-description-participant"><%= progress.description %></p>
           <div class="progress-participant-photo">

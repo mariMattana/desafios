@@ -56,14 +56,14 @@ body {
 }
 #win-challenge {
   position: absolute;
-  bottom: 40%;
+  bottom: 35%;
   left: 3%;
   color: green;
   cursor: pointer;
 }
 #loose-challenge {
   position: absolute;
-  bottom:40%;
+  bottom: 35%;
   left: 6%;
   color: $strong-red;
   cursor: pointer;
@@ -96,22 +96,6 @@ body {
 .challenge-info-title {
   color: $red;
 }
-#challenge-start-date {
-  // position: relative;
-  // top: -20%;
-  // left: 20%;
-}
-#challenge-left-days {
-  // position: relative;
-  // top: -76%;
-  // left: 40%;
-}
-#challenge-value {
-  // position: relative;
-  // top: -133%;
-  // left: 60%;
-}
-
 .challenge-progresses {
   background-color: #FDFFFF;
 }
@@ -126,6 +110,22 @@ body {
   color: $red;
   font-weight: bold;
 }
+
+
+#open-form-progress {
+  position: absolute;
+  right: 10%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 40px;
+  color: #666666;
+}
+
+#form-progress-button:hover {
+  color: $dark-gray;
+  text-decoration: none;
+}
 .challenge-progress-owner {
   width: 97%;
   height: 300px;
@@ -135,11 +135,64 @@ body {
 }
 .progress-owner-photo {
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 5%;
 }
 .progress-owner-photo img {
   border-radius: 50%;
+}
+.progress-date {
+  position: absolute;
+  left: 5%;
+  bottom:10%;
+}
+.progress-img-owner {
+  position: absolute;
+  right: 15px;
+  top: 25px;
+}
+.challenge-progress-participant {
+  width: 97%;
+  height: 300px;
+  margin: 20px;
+  position: relative;
+  background-color: #FDFDFD ;
+}
+.progress-participant-photo {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+}
+.progress-participant-photo img {
+  border-radius: 50%;
+}
+.progress-title-participant {
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  border-bottom: 3px solid $red;
+}
+.progress-description-participant {
+  position: absolute;
+  right: 30%;
+  overflow-y: auto;
+  height: 50px;
+  top: 100px;
+  padding: 0;
+  margin: 0;
+  left: 30%;
+  width: 33%;
+  word-break: break-all;
+}
+.progress-date-participant {
+  position: absolute;
+  right: 5%;
+  bottom:10%;
+}
+.progress-img-participant {
+  position: absolute;
+  left: 15px;
+  top: 25px;
 }
 .progress-title {
   position: absolute;
@@ -158,42 +211,15 @@ body {
   width: 33%;
   word-break: break-all;
 }
-.progress-date {
-  position: absolute;
-  left: 5%;
-  bottom:10%;
-}
-.progress-participant-photo img {
-  border-radius: 50%;
-}
-.progress-title-participant {
-  position: absolute;
-  top: 5%;
-  left: 30%;
-  border-bottom: 3px solid $red;
-}
-.progress-description-participant {
-  position: absolute;
-  top: 30%;
-  right: 25%;
-}
-.progress-date-participant {
-  margin-left: 76%;
-}
-#open-form-progress {
-  position: absolute;
-  right: 10%;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 40px;
-  color: #666666;
+.special{
+  height: 100%;
+  width:100%;
 }
 #open-form-progress:hover {
   color: $dark-gray;
   text-decoration: none;
-}
 
+}
 // .card-challenge-show {
 //   width: 75%;
 //   height: 300px;
@@ -258,7 +284,7 @@ body {
 //   left: 75px;
 // }
 .sidebar {
-  display: inline;
+  // display: inline;
   position: absolute;
   right: 0;
   height: 100%;
