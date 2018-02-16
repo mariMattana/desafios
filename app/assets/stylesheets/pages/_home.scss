@@ -71,11 +71,9 @@ body {
   margin-top: 0;
   padding-bottom: 50px;
   padding-top: 50px;
-  font-family: "Cabin Sketch", cursive;
   font-size: 50px;
-  background: -webkit-linear-gradient(#2a90af, #db5e34);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  color: $red;
 }
 .card-how-works {
   margin: 0 auto;
