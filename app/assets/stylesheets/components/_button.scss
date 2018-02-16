@@ -1,9 +1,30 @@
 .button {
+  padding: 15px;
   border-radius: 5px;
   border: none;
   margin-right: 10px;
+  font-size: 25px;
 }
-
+.button-explore {
+  background: linear-gradient(#81a8a8, #3F5E5E);
+  // background-color: $red;
+  color: white;
+}
+.button-explore:hover {
+  text-decoration: none;
+  background-color: #7c0000;
+  color: white;
+}
+.button-challenge {
+  background: linear-gradient(#b27049, #950000);
+  background-color: #011882;
+  color: white;
+}
+.button-challenge:hover {
+  text-decoration: none;
+  background-color: #001160;
+  color: white;
+}
 .form-progress-button {
   border: none;
   margin: 0;
